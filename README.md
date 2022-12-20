@@ -17,3 +17,6 @@ Here we can see an example usage:
 ![two](https://user-images.githubusercontent.com/89973113/208699089-ebb2e6c7-7661-41af-b4c3-919e434188e2.png)
 In red we can see the input file, in blue the output file, and in green the payload to filter for.
 We obtained a 37 lines file, and we can see some results. This means there are 37 injectable probes that can be injected by the payload "<script>alert(1)</script>".
+
+Example scan all ports:
+![three](https://user-images.githubusercontent.com/89973113/208711680-3f6bad71-f797-4352-912e-727196377a97.png)
