@@ -11,7 +11,7 @@ Supported ports are 20-22-25-80.
 In blue you can see the reply from the server.
 In red you can see the reply to the client, correctly injected.
 
-The package comes with a filter as well, which takes the nmap-service-probes.txt file and looks for match directives that can be injected with a certain payload. We use a general payload by default, which contains most of the injection characters known, and we print the output to a file called injectable-service-probes.txt. 
+The package comes with a filter as well, which takes a file named top-services-probest.txt (which contains all the probes from nmap-service-probes that belong to top services we manually filtered for, see:match-topservices.txt) and looks for match directives that can be injected with a certain payload. We use a general payload by default, which contains most of the injection characters known, and we print the output to a file called injectable-service-probes.txt. 
 But if you want you can specify a different payload to filter for.
 Here we can see an example usage: 
 ![two](https://user-images.githubusercontent.com/89973113/208699089-ebb2e6c7-7661-41af-b4c3-919e434188e2.png)
