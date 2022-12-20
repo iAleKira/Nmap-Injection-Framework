@@ -1,7 +1,7 @@
 # Injector_server
 Injector_server is a tool developed to search for vulnerabilities in network scanning tools.
 Developed in Java, it sets up a server listening on certain ports, waiting for incoming connections by a scanner.
-Once it receives a request from the client, the answer replies with a proper nmap output formula and injects the web client reading the output.
+Once it receives a request from the client, the answer is delivered with a proper nmap output formula and injects the web client reading the output.
 
 How does it work:
 ![one](https://user-images.githubusercontent.com/89973113/208695942-f899937f-13a0-4695-87f6-5fad4b411e25.png)
