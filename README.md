@@ -5,9 +5,9 @@ Once it receives a request from the client, the server delivers the answer with 
 
 How does it work:
 ![one](https://user-images.githubusercontent.com/89973113/208695942-f899937f-13a0-4695-87f6-5fad4b411e25.png)
-In green we can see the scan is launched on the machine that is using the server, on port 22, but you don't need to specifit a port 
-if you want to scan all ports of the server at the same time. 
-Supported ports are 20-22-25-80.
+In green we can see the scan is launched on the machine that is using the server, on port 22, but you don't need to specify a port 
+if you want to scan all ports on the server at the same time. 
+Supported ports at the moment are 20-22-25-80.
 In blue you can see the reply from the server.
 In red you can see the reply to the client, correctly injected.
 
