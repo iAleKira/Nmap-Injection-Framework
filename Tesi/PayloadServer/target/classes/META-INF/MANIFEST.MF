@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Built-By: kali
+Build-Jdk: 19.0.1
+Class-Path: lib/commons-lang3-3.3.1.jar lib/commons-collections4-4.4.jar
+Main-Class: com.server.Server
+Created-By: Maven Integration for Eclipse
+
