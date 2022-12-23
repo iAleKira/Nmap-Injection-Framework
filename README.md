@@ -23,6 +23,8 @@ We obtained a 37 lines file, and we can see some results. This means there are 3
 Example scan all ports:
 ![three](https://user-images.githubusercontent.com/89973113/208711680-3f6bad71-f797-4352-912e-727196377a97.png)
 
+You can launch bothe All_payloads_filter and Injector_server at the same time through script.sh.
+
 Libraries used: 
 AssertJ : credits to: https://github.com/assertj.
 regexp-gen : credits to: https://github.com/Cornutum/regexp-gen
