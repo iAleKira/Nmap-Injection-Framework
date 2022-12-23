@@ -1,4 +1,6 @@
 # Injector_server
+This project is based upon RevOK prototype developed by Andrea Valenza, Gabriele Costa and Alessandro Armando. You can find the paper online at this link: https://arxiv.org/pdf/2006.09769.pdf
+
 Injector_server is a tool developed to search for vulnerabilities in network scanning tools.
 Developed in Java, it sets up a server listening on certain ports, waiting for incoming connections by a scanner.
 Once it receives a request from the client, the server delivers the answer with a proper nmap output formula and injects the web client reading the output.
