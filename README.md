@@ -24,6 +24,6 @@ Example scan all ports:
 ![three](https://user-images.githubusercontent.com/89973113/208711680-3f6bad71-f797-4352-912e-727196377a97.png)
 
 Libraries used: 
-AssertJ : credits to: https://github.com/assertj
+AssertJ : credits to: https://github.com/assertj \n
 regexp-gen : credits to: https://github.com/Cornutum/regexp-gen
 
