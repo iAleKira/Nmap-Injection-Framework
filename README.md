@@ -29,6 +29,7 @@ In red we can see the input file, in blue the output file, and in green the payl
 We obtained a 37 lines file, and we can see some results. This means there are 37 injectable probes that can be injected by the payload "<script>alert(1)</script>".
 
 Update 25/12/22
+
 You can now launch full program (both All_payloads_filter and Injector_server at the same time) through script.sh.
 ![scriptsh working](https://user-images.githubusercontent.com/89973113/209472628-0fb9c98a-fed1-4926-9118-47da7b9571da.png)
 
