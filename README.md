@@ -37,6 +37,13 @@ You can now input a payload file to Injector_server.jar. Server will extract a r
 ![server with input](https://user-images.githubusercontent.com/89973113/209472701-a13000ed-21db-48a4-89fc-997ee33c016b.png)
 In green you can see the input file, in blue the payload that got selected to be delivered, in red the delivery.
 
+Having issues with jar files on Linux? 
+
+Try running: -java -jar ./filename.jar
+
+
 Libraries used: 
+
 AssertJ : credits to: https://github.com/assertj.
+
 regexp-gen : credits to: https://github.com/Cornutum/regexp-gen
