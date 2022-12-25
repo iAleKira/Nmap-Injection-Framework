@@ -5,7 +5,7 @@ This framework is designed to exploit vulnerabilities of the well known scanning
 Developed in Java, it consists of 2 executables:
 1. Injector_server.jar
 2. All_payloads_filter.jar
-3. 
+
 Injector_server.jar sets up a server listening on certain ports, waiting for incoming connections by a scanner.
 Once it receives a request from the client, the server delivers the answer with a proper nmap output formula and injects the web client reading the output.
 
