@@ -39,7 +39,7 @@ In green you can see the input file, in blue the payload that got selected to be
 
 # Having issues with jar files on Linux? 
 
-Try running: -java -jar ./filename.jar
+Try running: java -jar ./filename.jar or use script.sh directly for default settings usage.
 
 
 # Libraries used: 
