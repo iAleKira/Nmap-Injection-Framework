@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.TreeMap;
 
 import org.cornutum.regexpgen.RandomGen;
-import org.cornutum.regexpgen.RegExpGen;
-import org.cornutum.regexpgen.js.Provider;
 import org.cornutum.regexpgen.random.RandomBoundsGen;
 
 import injector.ExploitBuilder;
@@ -38,7 +36,7 @@ import java.nio.channels.SocketChannel;
  * @param args: no parameters are allowed.
  * 
  * 
- *              * @throws IOException: The server has restrictions. The path in
+ *              @throws IOException: The server has restrictions. The path in
  *              which the server will look for files is:
  *              Tesi/TextFiles/InjectableProbes/toInject/. If the server is not
  *              launched from its directory then there will be troubles tracking
@@ -69,9 +67,19 @@ import java.nio.channels.SocketChannel;
  *              extracted string and returned to the client.
  */
 public class Server {
+	private static String payloadPath;
 	public static void main(String[] args) throws IOException {
-		if (args.length != 0) {
-			System.err.print("Cannot run this program with parameters.");
+		switch (args.length) {
+		case 0:
+			payloadPath = "Payloads//example_payloads.txt";
+			break;
+		case 1:
+			payloadPath = args[0];
+			break;
+		default:
+			System.err.println(
+					"Cannot locate " + args[0] + ". Usage : ./Injector_server.jar inputFile.\nMake sure the file is in the same"
+							+ " directory as the jar file.\nExample: ./Injector_server.jar Payloads//example_payloads.txt.");
 			System.exit(1);
 		}
 
@@ -108,29 +116,24 @@ public class Server {
 						String filePath = "TextFiles//injectableProbes//toInject//"
 								+ map.get(clientSocket.getLocalPort()) + ".txt";
 						BufferedReader fileToRead = new BufferedReader(new FileReader(filePath));
-						String payloadPath = "Payloads//example_payloads.txt";
 
 						BufferedReader payloadToRead = new BufferedReader(new FileReader(payloadPath));
 						String payload = database.getRandomLineFromFile(payloadToRead, payloadPath);
-						payload = payload.replace("(", "\\(").replace(")", "\\)");
-
 						PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
-						System.out.println("Client opened connection on local port:" + clientSocket.getLocalPort());
-						String injected = responder.generateResponse(database, injector, payload, filePath, fileToRead);
+						System.out.println("Client opened connection on local port:" + clientSocket.getLocalPort() + "\n");
+						String injected = responder.generateResponse(database, injector, payload, filePath, fileToRead, random);
 
-						RegExpGen generator = Provider.forEcmaScript().matchingExact(injected);
-						String generated = generator.generate(random);
-
-						output.println(generated);
-						System.out.println(generated);
+						System.out.println("Payload to deliver: " + payload);
+						output.println(injected);
+						System.out.println("Response delivered: " + injected);
 					}
 				}
 				selector.selectedKeys().clear();
 			}
 		} catch (IOException e) {
 			System.out.println(
-					"An error occurred when retrieving datas from database. Make sure server is launched in Tesi "
-							+ "directory.");
+					"An error occurred when retrieving data from database.\nMake sure server is launched in Tesi "
+							+ "directory and that the input file is a correct path.");
 		}
 	}
 }

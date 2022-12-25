@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="java" project="PayloadServer" tests="11" started="11" failures="0" errors="0" ignored="0">
+  <testsuite name="server.DatabaseTest" time="0.026">
+    <testcase name="testMapValueToName" classname="server.DatabaseTest" time="0.0"/>
+    <testcase name="testGetRandomPayloadFromFile" classname="server.DatabaseTest" time="0.018"/>
+    <testcase name="testNullFileExceptionIsCaught" classname="server.DatabaseTest" time="0.0"/>
+    <testcase name="testMapIsCorrectlyFilled" classname="server.DatabaseTest" time="0.008"/>
+    <testcase name="testNullBufferedReaderExceptionIsCaught" classname="server.DatabaseTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="injector.ExploitBuilderTest" time="0.004">
+    <testcase name="testInjectionIsEmpty" classname="injector.ExploitBuilderTest" time="0.003"/>
+    <testcase name="testRestrict" classname="injector.ExploitBuilderTest" time="0.001"/>
+    <testcase name="testInjectPayload" classname="injector.ExploitBuilderTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="server.ResponseGeneratorTest" time="0.141">
+    <testcase name="testGeneratedResponseContainsPayload" classname="server.ResponseGeneratorTest" time="0.037"/>
+    <testcase name="testGeneratedResponseIsNotNull" classname="server.ResponseGeneratorTest" time="0.074"/>
+    <testcase name="testGeneratedResponseIsNotEmpty" classname="server.ResponseGeneratorTest" time="0.03"/>
+  </testsuite>
+</testrun>

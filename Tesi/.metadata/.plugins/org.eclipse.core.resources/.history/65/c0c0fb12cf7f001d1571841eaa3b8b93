@@ -1,0 +1,91 @@
+package filter;
+
+import java.io.*;
+import java.util.regex.Pattern;
+
+import injector.ExploitBuilder;
+
+/**
+ * @author Alessandro Bonfiglio.
+ * 
+ *         This class is All_payloads_filter.jar main class. It filters an
+ *         inputFile line by line, into an outputFile by a certain payload. User
+ *         can check whether a file can be injected with a payload of choice or
+ *         not. 
+ *         
+ *         Number of input arguments. 0: uses default settings. 3: uses
+ *         user input files. It then implements the filtering algorithm. An
+ *         ExploitBuilder is needed, therefore it uses ExploitBuilder.jar
+ *         library. The input file is read line by line, and for each line we
+ *         check if it can be filtered, according to the implementation, by the
+ *         method {@link canBeFiltered}. If the return value is true, we then
+ *         proceed restricting the string in between pipes symbols | | and then
+ *         inject it with the ExploitBuilder. If the injection succeeds, then
+ *         the original string from the file is saved in the output file. If the
+ *         injection fails, therefore the resulting string is empty, we discard
+ *         it.
+ * 
+ * @throws IOException: All_payloads_filter.jar, as default, is meant to be
+ *                      launched from a fixed directory together with the file
+ *                      it filters. - If the file is not found in the same
+ *                      directory as Filter.jar: a FileNotFoundException is
+ *                      triggered and the executable exits with error: "File
+ *                      top-services-probes.txt not found. File needs to be
+ *                      included...". - If the input file, default:
+ *                      top-services-probes.txt, is found in the same directory
+ *                      as Filter.jar but there is no output file then a
+ *                      FileNotFoundException is triggered and the executable
+ *                      exits with error: "Output path needs to exist..".
+ */
+public class Printer {
+
+	private static Filter filter;
+
+	public static final void main(String[] args) throws IOException {
+
+		switch (args.length) {
+		case 0:
+			filter = new Filter("top-services-probes.txt", "injectableProbes//injectable-service-probes.txt",
+					"<>|ale=/'-()[] 5rt%\"’\\$&#x`*~+-_.,:;?!@OR^{¼¾¢0£¹¬`§°ç€¶");
+			break;
+		case 3:
+			filter = new Filter(args[0], args[1], args[2]);
+			break;
+		default:
+			System.err.println(
+					"Wrong number of arguments. Please insert three or none.\n Usage: ./Filter.jar. inputFile outputFile pattern");
+			System.exit(1);
+		}
+		String payload = filter.getPayload();
+		ExploitBuilder builder = new ExploitBuilder();
+		Pattern pattern = Pattern.compile("match \\w* m\\|\\W.*\\(.*\\w*.*\\).*\\w");
+		try {
+			BufferedReader readBuffer = new BufferedReader(new FileReader(filter.getInputPath()));
+			String readLine;
+			try {
+				PrintStream outputFile = new PrintStream(new File(filter.getOutputPath()));
+				System.setOut(outputFile);
+				while (true) {
+					readLine = readBuffer.readLine();
+					if (readLine == null) {
+						break;
+					}
+					if (filter.canBeFiltered(pattern, readLine)) {
+						String restricted = builder.restrict(readLine);
+						String injected = builder.inject(restricted, payload);
+						if (!injected.isEmpty()) {
+							System.out.println(readLine);
+						}
+					}
+				}
+				System.setOut(System.out);
+				readBuffer.close();
+			} catch (FileNotFoundException ex) {
+				System.out.println("Output path needs to exist. Path: " + filter.getOutputPath() + ".");
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("File " + filter.getInputPath()
+					+ " not found. File needs to be included in the same directory path as Filter.jar.");
+		}
+	}
+}

@@ -1,0 +1,24 @@
+package server;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+
+import injector.ExploitBuilder;
+
+/**
+ * This class allows to access strings from a file by a random location.
+ */
+public final class ResponseGenerator {
+
+	/*
+	 * sdsdsdsd
+	 */
+	public String generateResponse(Database database, ExploitBuilder injector, String payload, String filePath,
+			BufferedReader fileToRead) throws IOException {
+		String toInject = database.getRandomLineFromFile(fileToRead, filePath);
+		String restricted = injector.restrict(toInject);
+		String injected = injector.inject(restricted, payload);
+		injected = injected.replace("\\r", "\r").replace("\\n", "\n");
+		return injected;
+	}
+}

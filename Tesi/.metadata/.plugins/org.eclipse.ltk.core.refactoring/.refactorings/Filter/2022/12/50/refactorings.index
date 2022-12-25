@@ -1,0 +1,38 @@
+1670336954947	Rename type 'Identifier'
+1670597231081	Extract method 'includes$Num'
+1670597370052	Rename local variable 'mShort'
+1670597386801	Rename local variable 'filtered'
+1670597453595	Extract method 'has$Word'
+1670598065791	Rename local variable 'nmapRegex'
+1670599921643	Delete element
+1670600090724	Delete element
+1670600099343	Delete element
+1670600131690	Delete element
+1670600135154	Delete element
+1670601823006	Rename local variable 's'
+1670601989948	Rename method 'filter'
+1670602241665	Rename local variable 'p'
+1670603721460	Rename local variable 'buffer'
+1670604918520	Rename local variable 'p'
+1670605345797	Delete element
+1670605520651	Rename local variable 'p'
+1670605658126	Rename field 'pattern'
+1670606909549	Rename method 'has$Word'
+1670606921481	Rename method 'includes$Num'
+1670606940232	Rename method 'includesDollarNum'
+1670606946471	Rename method 'includesDollarWord'
+1670606997911	Rename local variable 'noDollarnum'
+1670669925571	Rename local variable 'file'
+1670669937651	Rename local variable 'buffer'
+1670669951426	Rename local variable 'line'
+1670669961076	Rename local variable 'output'
+1670670168031	Rename local variable 'ristretta'
+1670670234943	Rename local variable 'reduced'
+1670671283682	Rename local variable 'line'
+1670671505903	Rename local variable 'filtered'
+1670671549209	Rename local variable 'include$Num'
+1670671568383	Rename local variable 'has$Num'
+1670671580281	Rename method 'includes$Num'
+1670671603195	Rename local variable 'p$Num'
+1670671643400	Rename method 'testIncludes$Num'
+1670687073495	Delete element

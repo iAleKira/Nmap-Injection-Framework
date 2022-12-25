@@ -1,0 +1,62 @@
+package injector;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class ExploitBuilderTest {
+
+	private String ssh;
+	private String payload;
+	private ExploitBuilder builder;
+	
+	@Before
+	public void setup() {
+		ssh = "match ssh m|^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n| p/OpenSSH/ v/$2 Debian $3/ i/protocol $1/ o/Linux/ cpe:/a:openbsd:openssh:$2/ cpe:/o:debian:debian_linux/ cpe:/o:linux:linux_kernel/a\n";
+		payload = "\"’/><img src=’x’ onerror=’alert(1)’";
+		builder = new ExploitBuilder();
+	}
+	
+	@Test
+	public void testRestrict(){
+		String restricted = builder.restrict(ssh);
+		assertTrue(ssh.contains(restricted));
+		assertEquals("SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n", restricted);
+	}
+	
+	@Test
+	public void testInjectPayload(){
+		String restricted = "SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n";
+		String injected = builder.inject(restricted, payload);
+		assertEquals("SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]\"’/><img src=’x’ onerror=’alert(1)’\\r?\\n", injected);
+		assertTrue(injected.contains(payload));	
+	}
+	
+	@Test
+	public void testInjectionIsEmpty(){
+		String restricted = "220 RICOH Pro (\\d+[a-zA-Z]{0,3}) FTP server \\(([\\d+.]+)\\) ready\\.\\r\\n";
+		String injected = builder.inject(restricted, payload);
+		assertEquals("", injected);
+		assertTrue(!injected.contains(payload));
+		assertTrue(injected.isEmpty());
+	}	
+	
+	@Test
+	public void testExtractInjectionGroup(){
+		String restricted = "SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n";
+		String captureGroup = builder.extractInjectionGroup(restricted, payload);
+		assertEquals("", injected);
+		assertTrue(!injected.contains(payload));
+		assertTrue(injected.isEmpty());
+	}
+	
+	@Test
+	public void testExtractInjectionGroupIsNull(){
+		String restricted = "SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n";
+		String injected = builder.inject(restricted, payload);
+		assertEquals("", injected);
+		assertTrue(!injected.contains(payload));
+		assertTrue(injected.isEmpty());
+	}
+	
+}

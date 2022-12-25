@@ -1,0 +1,70 @@
+package server;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Map;
+
+/**
+ * This class setups the relationship between each port we want to listen to and
+ * its relative service.
+ */
+public class Database {
+	
+	private Map<Integer, String> map;
+	
+	public Database(Map<Integer, String> map) {
+		this.map=map;
+	}
+	
+	/**
+	 * @param map -   It's the map that needs to be filled.
+	 * @return void - This method fills an input Map with each port the server listens
+	 *                to and matches the port with a string. Each string represents a
+	 *                service. By overriding this method the user can set the server to
+	 *                listen on more ports and its relative service, and so, the file
+	 *                that will be accessed, but it will be needed to add the relative
+	 *                .txt file in the directory: "Tesi/TextFiles/injectableProbes/toInject/".
+	 */
+	public void fillMap() {
+		map.put(20, "ftp");
+		map.put(22, "ssh");
+		//map.put(23, "telnet");
+		map.put(25, "smtp");
+		//map.put(79, "finger");
+		map.put(80, "http");
+	}
+
+	/**
+	 * @param buffer - It's the file to access.
+	 * @param path - The file's path.
+	 * 
+	 * @return randomLine: A random line obtained from the file buffer in path.
+	 * 
+	 *         This method generates a random location and accesses a valid file
+	 *         from the line in that location. The accessed line is then returned.
+	 * 
+	 */
+	public String getRandomLineFromFile(BufferedReader buffer, String path) throws IOException {
+		if (buffer == null) {
+			throw new IllegalArgumentException("Input file is not valid. File: " + buffer);
+		}
+		
+		if (path == null) {
+			throw new IllegalArgumentException("Input path is not valid. Path: " + path);
+		}
+		int count = 0;
+		try {
+			while (buffer.readLine() != null) {
+				count++;
+			}
+		} catch (IOException e) {
+			System.out.println("Error while reading from file " + path + ". Cannot read more from file.");
+		}
+		buffer.close();
+		double randomLocation = (Math.random() * count);
+		String randomLine = Files.readAllLines(Paths.get(path)).get((int) randomLocation);
+		return randomLine;
+	}
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value=""/>
+		<list key="findhistory">
+			<item value="JAVASE"/>
+			<item value="SE"/>
+			<item value="export CLASSPATH"/>
+			<item value="sure"/>
+			<item value="proper"/>
+			<item value="parse"/>
+			<item value="database"/>
+			<item value="$"/>
+			<item value="buf"/>
+			<item value="Linux AbyssLib"/>
+			<item value="Abyss"/>
+			<item value="Abys"/>
+			<item value="Linux Abyss"/>
+			<item value="Linux AbyssLib/([\d.]+)\r\n|s p/Abyss httpd/ v/$1/ i|"/>
+			<item value="stringa ristretta:HTTP/1\.0 401 Authorization Required\r\nWWW-Authenticate: BASIC realm=&quot;(DPR?-\d[^)]+)&quot;\r\n\r\nPassword Error\."/>
+		</list>
+		<list key="replacehistory">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="782"/>
+		<item key="DIALOG_Y_ORIGIN" value="162"/>
+		<item key="DIALOG_WIDTH" value="363"/>
+		<item key="DIALOG_HEIGHT" value="451"/>
+		<item key="DIALOG_FONT_NAME" value="1|Cantarell|11.0|0|GTK|1|"/>
+	</section>
+</section>

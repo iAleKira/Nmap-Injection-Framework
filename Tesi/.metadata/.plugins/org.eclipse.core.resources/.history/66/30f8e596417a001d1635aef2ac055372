@@ -1,0 +1,90 @@
+package injector;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * 
+ * @author Alessandro Bonfiglio
+ * 
+ *         This class implements the injector phase. Here we want to prepare
+ *         strings that will be returned by the server. If the string has a
+ *         capture group that matches the payload it gets injected with the
+ *         payload. If it can't be injected by a payload it is parsed by the
+ *         parser.
+ *
+ */
+public class ExploitBuilder {
+
+	/**
+	 * 
+	 * @param injectable: the string we want to inject
+	 * @param payload:    the payload we want to inject into the string
+	 * @param parser:     the parser we need in case the capture group is not
+	 *                    injectable by the payload.
+	 * @return injectable: the injected string.
+	 * 
+	 *         The method receives a string to inject, a payload to inject and a
+	 *         parser to use as input. It defines a backup string that it will use
+	 *         to iterate. It also defines captureGroup and captureGroup2, two
+	 *         variables that will contain a capture group, the first, and an
+	 *         eventual capture group inside the first one. In case we do have a
+	 *         nested capture group, we merge it at line 41 delete it at line 42. We
+	 *         then replace the capture group with the input payload, if the payload
+	 *         matches the capture group, otherwise we use the parser. We then
+	 *         delete the capture group from the backup string. When there are no
+	 *         more capture groups left the cycle stops.
+	 */
+
+	public String inject(String injectable, String payload) {
+		String backup = injectable; // string to iterate without modifying original string
+		String captureGroup; // for the capture group
+		String captureGroup2; // for a possible other capture group
+		String injected = injectable;
+
+		do {
+			captureGroup = backup.substring(backup.indexOf("("), backup.indexOf(")") + 1); //extract first captureGroup
+			long numOfCaptureGroups = captureGroup.chars().filter(ch -> ch == '(').count(); // count for nested groups																						
+			if (numOfCaptureGroups > 1) { // if there's more than one in the same group
+				int n = backup.lastIndexOf(captureGroup); // calculate where captureGroup starts
+				captureGroup2 = backup.substring(n + captureGroup.length(), // capture the other one
+						(backup.indexOf((")"), n + captureGroup.length()) + 1));
+				captureGroup = captureGroup + captureGroup2; // make one capture group
+				backup = backup.replace(captureGroup, ""); // delete it from backup
+				captureGroup="";
+			}
+
+			if (payload.matches(captureGroup)) { // if we do have a match with the payload
+				injected = injected.replace(captureGroup, payload); // we use the payload
+				backup = backup.replace(captureGroup, ""); // we do use the payload in the backup too
+			} else {
+				backup = backup.replace(captureGroup, ("")); // otherwise just delete it
+			}
+
+		} while (backup.contains("("));
+
+		if (!injected.contains(payload)) { //if we have don't have a match don't bother printing the output
+			injected = "";
+		}
+		return injected;
+	}
+	
+	/**
+	 * @param toRestict: string to restrict.
+	 * @return regexWithoutBars: regular expression in between | |.
+	 * 
+	 *  We compile a pattern so that we get the regular expression in between its starting symbols "m|^" and ending symbol "|".
+	 *  We then substring it to delete the string delimiters and the starting symbol we mentioned earlier, and we return
+	 *  the result.
+	 *  
+	 *  Posso spostarlo in ExploitBuilder
+	 */
+	public String restrict(String toRestict) {
+		Pattern p = Pattern.compile("m\\|[\\W](.*?)\\|"); //restrict the string in between | |
+		Matcher m = p.matcher(toRestict);
+		m.find();
+		String regexWithBars = m.group();
+		String regexWithoutBars = regexWithBars.substring(3, regexWithBars.length() - 1);
+		return regexWithoutBars;
+	}
+}

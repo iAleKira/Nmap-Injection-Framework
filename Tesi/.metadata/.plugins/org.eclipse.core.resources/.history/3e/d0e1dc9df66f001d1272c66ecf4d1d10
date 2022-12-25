@@ -1,0 +1,38 @@
+package parser;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.github.curiousoddman.rgxgen.RgxGen;
+
+public class Parser {
+	   
+	public String parse(String line) {
+    //Pattern p = Pattern.compile("m[\\W]\\W*.* "); //.compile("\\( *(.*) *\\)");
+    Pattern p = Pattern.compile("m\\|[\\W].*\\|"); //.compile("\\( *(.*) *\\)");
+    
+    Matcher m = p.matcher(line);
+    m.find();
+    String regexWithBars = m.group();
+    
+    String regexWithoutBars = regexWithBars.substring(3,regexWithBars.length()-1);
+    
+    //String captureGroup = filtro1.substring(filtro1.indexOf("("), filtro1.indexOf(")")+1);
+   
+    //System.out.println("REGEX TO MATCH:" + regexFiltro1);
+    
+    String replaced = regexWithoutBars.replace("\\n", "\n").replace("\\r", "\n"); //potrebbe funzionare
+    // rimpiazzare \r\n così: (\r\n|\r|\n)  ?
+    // \r\n e' il fine stringa di Windows. \n fine stringa di Linux. \r fine stringa di Mac
+    
+    //System.out.println("REPLACED:" + replaced);
+    
+
+    RgxGen regularExp = new RgxGen(replaced);
+    
+    //RgxGen regularExp = new RgxGen(regexFiltro1);
+    String matched = regularExp.generate();
+    
+    return matched;
+	}
+}

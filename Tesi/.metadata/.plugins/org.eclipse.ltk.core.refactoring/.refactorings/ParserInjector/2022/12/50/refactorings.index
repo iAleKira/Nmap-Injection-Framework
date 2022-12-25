@@ -1,0 +1,19 @@
+1670333416677	Rename local variable 'subUno'
+1670333441545	Rename local variable 'groupOne'
+1670333851916	Extract method 'extractCaptureGroups'
+1670335009317	Move member 'extractCaptureGroups'
+1670335141066	Rename method 'extractCaptureGroups'
+1670335712253	Extract method 'restrictString'
+1670352940162	Rename local variable 'match'
+1670516952934	Rename method 'injectCaptureGroups'
+1670516961537	Rename method 'restrictString'
+1670593018831	Delete element
+1670593023694	Delete element
+1670600076558	Copy compilation unit
+1670600112726	Copy compilation unit
+1670675788815	Copy compilation unit
+1670681854535	Delete element
+1670682063543	Rename resource 'libraries'
+1670682210694	Move compilation unit
+1670682214601	Delete element
+1670682309611	Move package

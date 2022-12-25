@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.cornutum.regexpgen.RandomGen;
+import org.cornutum.regexpgen.random.RandomBoundsGen;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +26,7 @@ public class ResponseGeneratorTest {
 	private String filePath;
 	private BufferedReader fileToRead;
 	private String response;
+	private RandomGen random;
 
 	@Before
 	public void setup() throws IOException{
@@ -34,26 +37,27 @@ public class ResponseGeneratorTest {
 		filePath = "//home//kali//Desktop//Tesi//TextFiles//injectableProbes//toInject//http.txt";
 		fileToRead = new BufferedReader(new FileReader(filePath));
 		payload = "<script>alert(1)</script>";
+		random = new RandomBoundsGen();
 	}
 	
 	@Test
 	public void testGeneratedResponseContainsPayload() throws IOException{
 		database.fillMap();
-		response = generator.generateResponse(database, injector, payload, filePath, fileToRead);
+		response = generator.generateResponse(database, injector, payload, filePath, fileToRead,random);
 		assertTrue(response.contains(payload));
 	}	
 	
 	@Test
 	public void testGeneratedResponseIsNotNull() throws IOException{
 		database.fillMap();
-		response = generator.generateResponse(database, injector, payload, filePath, fileToRead);
+		response = generator.generateResponse(database, injector, payload, filePath, fileToRead,random);
 		assertNotNull(response);
 	}
 	
 	@Test
 	public void testGeneratedResponseIsNotEmpty() throws IOException{
 		database.fillMap();
-		response = generator.generateResponse(database, injector, payload, filePath, fileToRead);
+		response = generator.generateResponse(database, injector, payload, filePath, fileToRead, random);
 		assertTrue(!response.isEmpty());
 	}	
 }

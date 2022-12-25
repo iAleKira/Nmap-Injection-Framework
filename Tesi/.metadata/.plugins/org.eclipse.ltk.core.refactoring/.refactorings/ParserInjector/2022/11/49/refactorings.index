@@ -1,0 +1,10 @@
+1669562007917	Delete element
+1669717773923	Rename local variable 'path'
+1669718561029	Rename local variable 'reader'
+1669719477382	Rename compilation unit 'Matcher.java'
+1669721139685	Rename compilation unit 'MatcherParserTEst.java'
+1669721326702	Delete element
+1669721357878	Delete element
+1669725308455	Rename type 'RegexParser'
+1669725316288	Rename type 'MatcherParser'
+1669725491512	Rename type 'MatcherParserTest'

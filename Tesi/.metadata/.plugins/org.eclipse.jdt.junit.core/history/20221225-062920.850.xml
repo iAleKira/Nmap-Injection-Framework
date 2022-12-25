@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ExploitBuilderTest (2)" project="PayloadServer" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="injector.ExploitBuilderTest" time="0.007">
+    <testcase name="testInjectionIsEmpty" classname="injector.ExploitBuilderTest" time="0.006"/>
+    <testcase name="testRestrict" classname="injector.ExploitBuilderTest" time="0.001"/>
+    <testcase name="testInjectPayload" classname="injector.ExploitBuilderTest" time="0.001"/>
+  </testsuite>
+</testrun>

@@ -3,6 +3,10 @@ package server;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import org.cornutum.regexpgen.RandomGen;
+import org.cornutum.regexpgen.RegExpGen;
+import org.cornutum.regexpgen.js.Provider;
+
 import injector.ExploitBuilder;
 
 /**
@@ -11,20 +15,25 @@ import injector.ExploitBuilder;
 public final class ResponseGenerator {
 
 	/**
+	 * This method generates the response from the server to the client.
+	 * 
 	 * @param database - the database of the server.
 	 * @param injector - the ExploitBuilder injector that will inject the payload into the string.
 	 * @param payload  - the payload to inject. 
 	 * @param filePath - the path of the fileToRead.
 	 * @param fileToRead - the file from which the method reads.
-	 * 
+	 * @param random - random object to allow parsing.
 	 * @return injected - the string injected with the payload
 	 */
 	public String generateResponse(Database database, ExploitBuilder injector, String payload, String filePath,
-			BufferedReader fileToRead) throws IOException {
+			BufferedReader fileToRead, RandomGen random) throws IOException {
 		String toInject = database.getRandomLineFromFile(fileToRead, filePath);
 		String restricted = injector.restrict(toInject);
-		String injected = injector.inject(restricted, payload);
-		injected = injected.replace("\\r", "\r").replace("\\n", "\n");
+		String captureInjection = injector.extractInjectionGroup(restricted, payload);
+		restricted = restricted.replace(captureInjection, "dontparsethis").replace("\\r", "\r").replace("\\n", "\n");
+		RegExpGen generator = Provider.forEcmaScript().matchingExact(restricted);
+		String injected = generator.generate(random);	
+		injected = injected.replace("dontparsethis", payload);
 		return injected;
 	}
 }

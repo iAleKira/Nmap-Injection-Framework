@@ -1,0 +1,19 @@
+INDEX VERSION 1.131+/home/kali/Desktop/Tesi/.metadata/.plugins/org.eclipse.jdt.core
+2697120865.index
+97011846.index
+1786316687.index
+3619155759.index
+2900980257.index
+3054791843.index
+2959652760.index
+3528082898.index
+1975611748.index
+716722704.index
+3292896901.index
+1879320425.index
+1865797976.index
+3564992636.index
+4248708498.index
+2678293397.index
+1832086915.index
+3001277874.index
