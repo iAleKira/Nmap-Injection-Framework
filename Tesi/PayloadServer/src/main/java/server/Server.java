@@ -119,7 +119,8 @@ public class Server {
 						BufferedReader payloadToRead = new BufferedReader(new FileReader(payloadPath));
 						String payload = database.getRandomLineFromFile(payloadToRead, payloadPath);
 						PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
-						System.out.println("Client " + clientSocket.getInetAddress().getHostName() + " opened connection on local port:" + clientSocket.getLocalPort()+".");
+						System.out.println("Client " + clientSocket.getInetAddress().getHostName() + " opened connection on local port:" 
+						+ clientSocket.getLocalPort()+".");
 						String answer = responder.generateResponse(database, injector, payload, filePath, fileToRead, random);
 
 						System.out.println("Payload to deliver: " + payload);
