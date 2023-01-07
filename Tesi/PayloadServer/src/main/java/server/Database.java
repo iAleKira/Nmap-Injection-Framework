@@ -46,7 +46,7 @@ public class Database {
 	 * @return randomLine: A random line obtained from the file buffer in path.
 	 * 
 	 */
-	public String getRandomLineFromFile(BufferedReader buffer, String path) throws IOException {
+	public final String getRandomLineFromFile(BufferedReader buffer, String path) throws IOException {
 		if (buffer == null) {
 			throw new IllegalArgumentException("Input file is not valid. File: " + buffer);
 		}

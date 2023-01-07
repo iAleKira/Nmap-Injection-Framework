@@ -91,7 +91,6 @@ public class Server {
 		Selector selector = Selector.open();
 
 		database.fillMap();
-	
 
 		try {
 			for (int port : map.keySet()) {
@@ -120,12 +119,12 @@ public class Server {
 						BufferedReader payloadToRead = new BufferedReader(new FileReader(payloadPath));
 						String payload = database.getRandomLineFromFile(payloadToRead, payloadPath);
 						PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
-						System.out.println("Client opened connection on local port:" + clientSocket.getLocalPort() + "\n");
-						String injected = responder.generateResponse(database, injector, payload, filePath, fileToRead, random);
+						System.out.println("Client " + clientSocket.getInetAddress().getHostName() + " opened connection on local port:" + clientSocket.getLocalPort()+".");
+						String answer = responder.generateResponse(database, injector, payload, filePath, fileToRead, random);
 
 						System.out.println("Payload to deliver: " + payload);
-						output.println(injected);
-						System.out.println("Response delivered: " + injected);
+						output.println(answer);
+						System.out.println("Response delivered: " + answer);
 					}
 				}
 				selector.selectedKeys().clear();

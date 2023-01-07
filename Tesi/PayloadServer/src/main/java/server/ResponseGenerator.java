@@ -12,7 +12,7 @@ import injector.ExploitBuilder;
 /**
  * This class handles the generation of the response by the server.
  */
-public final class ResponseGenerator {
+public class ResponseGenerator {
 
 	/**
 	 * This method generates the response from the server to the client.
