@@ -37,7 +37,7 @@ You can now input a payload file to Injector_server.jar. Server will extract a r
 ![server with input](https://user-images.githubusercontent.com/89973113/209472701-a13000ed-21db-48a4-89fc-997ee33c016b.png)
 In green you can see the input file, in blue the payload that got selected to be delivered, in red the delivery.
 
-# Update 10/01/22
+# Update 10/01/23
 
 You can now filter the default file (top-services-probes.txt) by a payload of choice.
 ![update filter](https://user-images.githubusercontent.com/89973113/211525656-7257d8be-e0c5-4b9e-844a-8a8897532225.png)
