@@ -44,12 +44,12 @@ You can now filter the default file (top-services-probes.txt) by a payload of ch
 
 # BeEF
 
-NIF can work with beef by delivering a payload that gets the scanner's browser hooked to the scanned target's BeEF console. As you can see from the image, we replicate the case in an internal environment for education purpose.
-Step 1: The author starts the scan over the IP address.
+NIF can work with BeEF by delivering a payload that gets the scanner's browser hooked to the scanned target's BeEF console. As you can see from the image, we replicate the case in an internal environment for educational purpose.
+Step 1: The author starts the scan over the IP address and saves the results in an HTML file.
 
 ![beef1](https://user-images.githubusercontent.com/89973113/211528728-01978586-a59d-47eb-9510-13e7d6616196.png)
 
-Step 2: The author opens the scan file to check results, and the browser gets hooked.
+Step 2: The author opens the scan file to check results, and its browser gets hooked.
 
 ![beef2](https://user-images.githubusercontent.com/89973113/211528960-5231e2ce-a7c5-4142-b2b3-5ad80cfde940.png)
 
