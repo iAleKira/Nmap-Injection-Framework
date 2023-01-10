@@ -13,8 +13,8 @@ import injector.ExploitBuilder;
  *         can check whether a file can be injected with a payload of choice or
  *         not.
  * 
- *         Number of input arguments. 0: uses default settings. 3: uses user
- *         input files.
+ *         Number of input arguments. 0: uses default settings. 1: uses default paths and custom payload. 
+ *         3: uses user input files and payload.
  * 
  *         It then implements the filtering algorithm. An ExploitBuilder is
  *         needed, therefore it uses ExploitBuilder.jar library. The input file
@@ -48,13 +48,17 @@ public class Printer {
 		case 0:
 			filter = new Filter("top-services-probes.txt", "injectableProbes//injectable-service-probes.txt",
 					"<>|ale=/'-()[] 5rt%\"’\\$&#x`*~+-_.,:;?!@OR^{¼¾¢0£¹¬`§°ç€¶");
+			break;	
+		case 1:
+			filter = new Filter("top-services-probes.txt", "injectableProbes//injectable-service-probes.txt",
+					args[0]);
 			break;
 		case 3:
 			filter = new Filter(args[0], args[1], args[2]);
 			break;
 		default:
 			System.err.println(
-					"Wrong number of arguments. Please insert three or none.\n Usage: ./Filter.jar. inputFile outputFile pattern");
+					"Wrong number of arguments. Please insert three, one, or none.\n Usage: ./Filter.jar. inputFile outputFile \"payload\"");
 			System.exit(1);
 		}
 		String payload = filter.getPayload();
