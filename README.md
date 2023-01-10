@@ -37,6 +37,25 @@ You can now input a payload file to Injector_server.jar. Server will extract a r
 ![server with input](https://user-images.githubusercontent.com/89973113/209472701-a13000ed-21db-48a4-89fc-997ee33c016b.png)
 In green you can see the input file, in blue the payload that got selected to be delivered, in red the delivery.
 
+# Update 10/01/22
+
+You can now filter the default file (top-services-probes.txt) by a payload of choice.
+![update filter](https://user-images.githubusercontent.com/89973113/211525656-7257d8be-e0c5-4b9e-844a-8a8897532225.png)
+
+#BeEF
+NIF can work with beef by delivering a payload that gets the scanner's browser hooked to the scanned target's BeEF console. As you can see from the image, we replicate the case in an internal environment for education purpose.
+Step 1: The author starts the scan over the IP address.
+
+![beef1](https://user-images.githubusercontent.com/89973113/211528728-01978586-a59d-47eb-9510-13e7d6616196.png)
+
+Step 2: The author opens the scan file to check results, and the browser gets hooked.
+
+![beef2](https://user-images.githubusercontent.com/89973113/211528960-5231e2ce-a7c5-4142-b2b3-5ad80cfde940.png)
+
+Step 3: Beef can now launch commands on the browser: let's prove it.
+
+![beef3](https://user-images.githubusercontent.com/89973113/211529061-6e5bbbe9-0d0c-46a4-a7b7-d341cf79a1da.png)
+
 # Having issues with jar files on Linux? 
 
 Try running: java -jar ./filename.jar or use script.sh directly for default settings usage.
