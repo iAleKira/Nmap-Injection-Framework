@@ -48,7 +48,7 @@ NIF can work with BeEF by delivering a payload that gets the scanner's browser h
 
 Step 1: The author starts the scan over the IP address and saves the results in an HTML file.
 
-![beef1mod](https://user-images.githubusercontent.com/89973113/211807465-c8d4904e-a39f-421b-8825-1c6a6c003f75.png)
+![beef1mod](https://user-images.githubusercontent.com/89973113/211811047-ab79574b-6276-4ddf-bf47-f902ce665445.png)
 
 Step 2: The author opens the scan file to check results, and its browser gets hooked.
 
