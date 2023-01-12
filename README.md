@@ -58,10 +58,13 @@ Step 3: Beef can now launch commands on the browser: let's prove it.
 
 ![beef3](https://user-images.githubusercontent.com/89973113/211529061-6e5bbbe9-0d0c-46a4-a7b7-d341cf79a1da.png)
 
+# Docker
+
+You can pull the latest version of the docker image of the tool here : https://hub.docker.com/r/alekira/nmap_injection_framework
+
 # Having issues with jar files on Linux? 
 
 Try running: java -jar ./filename.jar or use script.sh directly for default settings usage.
-
 
 # Libraries used: 
 
