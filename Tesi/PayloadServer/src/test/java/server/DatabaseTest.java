@@ -28,7 +28,7 @@ public class DatabaseTest {
 	public void testMapIsCorrectlyFilled() {
 		database.fillMap();
 		assertThat(map).hasSize(4);
-		int ports[] = { 20, 22, 25, 80};
+		int ports[] = { 21, 22, 25, 80};
 		for (int key : ports) {
 			assertTrue(map.containsKey(key));
 		}
@@ -38,7 +38,7 @@ public class DatabaseTest {
 	@Test
 	public void testMapValueToName() {
 		database.fillMap();
-		assertEquals(map.get(20), "ftp");
+		assertEquals(map.get(21), "ftp");
 		assertEquals(map.get(22), "ssh");
 	}
 	

@@ -9,5 +9,5 @@ cd injectableProbes
 ./splitInjection.sh
 cd ..
 cd ..
-echo -e "Done. Injector_server now executing.\n"
-java -jar ./Injector_server.jar
+echo -e "Done. Nif now executing.\n"
+java -jar ./Nif.jar

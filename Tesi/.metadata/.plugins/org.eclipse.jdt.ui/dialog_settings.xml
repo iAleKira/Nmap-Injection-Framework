@@ -34,14 +34,21 @@
 		<item key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION" value="/home/kali/Desktop/Tesi"/>
 		<item key="FatJarPackageWizardPage.LIBRARY_HANDLING" value="1"/>
 		<item key="FatJarPackageWizardPage.LAUNCH_CONFIGURATION_SELECTION_NAME" value="Server (4) - PayloadServer"/>
-		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="/home/kali/Desktop/Tesi/Injector_server.jar"/>
+		<item key="FatJarPackageWizardPage.DESTINATION_PATH_SELECTION" value="/home/kali/Desktop/Tesi/NIFpop3.jar"/>
 		<list key="FatJarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="/home/kali/Desktop/Tesi/NIFpop3.jar"/>
+			<item value="/home/kali/Desktop/Tesi/NIF.jar"/>
 			<item value="/home/kali/Desktop/Tesi/Injector_server.jar"/>
-			<item value="/home/kali/Desktop/Tesi/hook.jar"/>
+			<item value="/home/kali/Desktop/Tesi/TestFilter.jar"/>
+			<item value="/home/kali/Desktop/Tesi/All_Payloads_Filter.jar"/>
+			<item value="/home/kali/Desktop/Tesi/All_Payloads_Filter2.jar"/>
+			<item value="/home/kali/Desktop/Tesi/es.jar"/>
 			<item value="/home/kali/Desktop/Tesi/All_payloads_filter.jar"/>
+			<item value="/home/kali/Desktop/Tesi/Injector_server2.jar"/>
+			<item value="/home/kali/Desktop/Tesi/Injector_server_withArgs.jar"/>
+			<item value="/home/kali/Desktop/Tesi/hook.jar"/>
 			<item value="/home/kali/Desktop/Tesi/All_payloads_filter2.jar"/>
 			<item value="/home/kali/Desktop/Tesi/filterDiverso.jar"/>
-			<item value="/home/kali/Desktop/Tesi/Injector_server2.jar"/>
 			<item value="/home/kali/Desktop/Tesi/alertFilter.jar"/>
 			<item value="/home/kali/Desktop/Tesi/Filter.jar"/>
 			<item value="/home/kali/Desktop/Tesi/server.jar"/>
@@ -49,13 +56,6 @@
 			<item value="/home/kali/Desktop/Tesi/byte.jar"/>
 			<item value="/home/kali/Desktop/Tesi/sqlinj.jar"/>
 			<item value="/home/kali/Desktop/Tesi/opzione1.jar"/>
-			<item value="/home/kali/Desktop/Tesi/injector.jar"/>
-			<item value="/home/kali/Desktop/Tesi/injectedAndMatched.jar"/>
-			<item value="/home/kali/Desktop/Tesi/injectedAndMatches.jar"/>
-			<item value="/home/kali/Desktop/Tesi/noreplace.jar"/>
-			<item value="/home/kali/Desktop/Tesi/Server.jar"/>
-			<item value="/home/kali/Desktop/Tesi/Payload_Server.jar"/>
-			<item value="/home/kali/Desktop/Tesi/FilterTre.jar"/>
 		</list>
 		<list key="FatJarPackageWizardPage.ANTSCRIPT_LOCATION_HISTORY">
 			<item value="/home/kali/Desktop/Tesi.xml"/>
@@ -136,6 +136,8 @@
 		<item key="JarManifestWizardPage.MANIFEST_LOCATION" value=""/>
 		<item key="JarManifestWizardPage.SEAL_JAR" value="false"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="/home/kali/Desktop/InjectionHandler.jar"/>
+			<item value="/home/kali/Desktop/InjectionHandlerMODIFIED.jar"/>
 			<item value="/home/kali/Desktop/ExploitBuilder.jar"/>
 			<item value="/home/kali/Desktop/Injector.jar"/>
 			<item value="/home/kali/Desktop/Parser.jar"/>

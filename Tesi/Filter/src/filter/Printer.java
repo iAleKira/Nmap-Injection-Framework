@@ -1,9 +1,8 @@
 package filter;
 
 import java.io.*;
-import java.util.regex.Pattern;
 
-import injector.ExploitBuilder;
+import injector.InjectionHandler;
 
 /**
  * @author Alessandro Bonfiglio.
@@ -62,8 +61,7 @@ public class Printer {
 			System.exit(1);
 		}
 		String payload = filter.getPayload();
-		ExploitBuilder builder = new ExploitBuilder();
-		Pattern pattern = Pattern.compile("match \\w* m\\|\\W.*\\(.*\\w*.*\\).*\\w");
+		InjectionHandler handler = new InjectionHandler();
 		try {
 			BufferedReader readBuffer = new BufferedReader(new FileReader(filter.getInputPath()));
 			String readLine;
@@ -75,10 +73,10 @@ public class Printer {
 					if (readLine == null) {
 						break;
 					}
-					if (filter.canBeFiltered(pattern, readLine)) {
-						String restricted = builder.restrict(readLine);
-						String injected = builder.inject(restricted, payload);
-						if (!injected.isEmpty()) {
+					if (filter.canBeFiltered(readLine, handler)) {
+						String restricted = handler.restrict(readLine);
+						String injected = handler.extractInjectionGroup(restricted, payload);
+						if (!injected.equals("no match found")) {
 							System.out.println(readLine);
 						}
 					}

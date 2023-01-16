@@ -1,63 +1,61 @@
 package server;
 
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Map;
-import java.util.TreeMap;
 
 import org.cornutum.regexpgen.RandomGen;
 import org.cornutum.regexpgen.random.RandomBoundsGen;
 import org.junit.Before;
 import org.junit.Test;
 
-import injector.ExploitBuilder;
+import injector.InjectionHandler;
 
 public class ResponseGeneratorTest {
 	private ResponseGenerator generator;
-	private Map<Integer, String> map;
-	private Database database;
-	private ExploitBuilder injector;
+	private InjectionHandler injector;
 	private String payload;
-	private String filePath;
-	private BufferedReader fileToRead;
 	private String response;
 	private RandomGen random;
+	private String toInject;
 
 	@Before
 	public void setup() throws IOException{
 		generator = new ResponseGenerator();
-		map = new TreeMap <Integer,String>();
-		database = new Database(map);
-		injector = new ExploitBuilder();
-		filePath = "//home//kali//Desktop//Tesi//TextFiles//injectableProbes//toInject//http.txt";
-		fileToRead = new BufferedReader(new FileReader(filePath));
+		injector = new InjectionHandler();
 		payload = "<script>alert(1)</script>";
 		random = new RandomBoundsGen();
+		toInject = "match ssh m|^SSH--OpenSSH([^\\r\\n]+)\\n| p/OpenSSH/ v/$2 Debian $3/ i/protocol $1/ o/Linux/ cpe:/a:openbsd:openssh:$2/ cpe:/o:debian:debian_linux/ cpe:/o:linux:linux_kernel/a";
 	}
 	
 	@Test
 	public void testGeneratedResponseContainsPayload() throws IOException{
-		database.fillMap();
-		response = generator.generateResponse(database, injector, payload, filePath, fileToRead,random);
+		response = generator.generateResponse(toInject, injector, payload,random);
 		assertTrue(response.contains(payload));
+		assertEquals("SSH--OpenSSH<script>alert(1)</script>\n", response);
 	}	
 	
 	@Test
+	public void testGeneratedResponseRegexIsSubstitued() throws IOException{
+		String capture=injector.extractInjectionGroup(toInject, payload);
+		assertTrue(payload.matches(capture));
+		response = generator.generateResponse(toInject, injector, payload,random);
+		assertTrue(response.contains(payload));
+		assertTrue(!response.contains(capture));
+	}
+	
+	@Test
 	public void testGeneratedResponseIsNotNull() throws IOException{
-		database.fillMap();
-		response = generator.generateResponse(database, injector, payload, filePath, fileToRead,random);
+		response = generator.generateResponse(toInject, injector, payload,random);
 		assertNotNull(response);
 	}
 	
 	@Test
 	public void testGeneratedResponseIsNotEmpty() throws IOException{
-		database.fillMap();
-		response = generator.generateResponse(database, injector, payload, filePath, fileToRead, random);
+		response = generator.generateResponse(toInject, injector, payload,random);
 		assertTrue(!response.isEmpty());
 	}	
 }

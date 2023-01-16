@@ -25,11 +25,13 @@ public class Database {
 	 * service, and so, the file that will be accessed, but it will be needed to add
 	 * the relative .txt file in the directory:
 	 * "Tesi/TextFiles/injectableProbes/toInject/".
+	 * The current services implemented in the map are those that can injected by 
+	 * any payload.
 	 * 
 	 * @param map - It's the map that needs to be filled.
 	 */
 	public void fillMap() {
-		map.put(20, "ftp");
+		map.put(21, "ftp");
 		map.put(22, "ssh");
 		map.put(25, "smtp");
 		map.put(80, "http");

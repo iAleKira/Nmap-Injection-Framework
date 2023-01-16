@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import org.cornutum.regexpgen.RandomGen;
 import org.cornutum.regexpgen.random.RandomBoundsGen;
 
-import injector.ExploitBuilder;
+import injector.InjectionHandler;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -27,7 +27,7 @@ import java.nio.channels.SocketChannel;
  *         defined in the {@link respond} method.
  * 
  *         The Server class makes use of different objects: -
- *         {@link ExploitBuilder} injector: which injects the response string
+ *         {@link InjectionHandler} injector: which injects the response string
  *         with a payload. - {@link ResponseGenerator} responder: which
  *         generates a response to return. The server also makes use of: -
  *         Selector selector: to make ports interact with the client. - String
@@ -85,7 +85,7 @@ public class Server {
 
 		Map<Integer, String> map = new TreeMap<Integer, String>();
 		Database database = new Database(map);
-		ExploitBuilder injector = new ExploitBuilder();
+		InjectionHandler injector = new InjectionHandler();
 		ResponseGenerator responder = new ResponseGenerator();
 		RandomGen random = new RandomBoundsGen();
 		Selector selector = Selector.open();
@@ -121,7 +121,8 @@ public class Server {
 						PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
 						System.out.println("Client " + clientSocket.getInetAddress().getHostName() + " opened connection on local port:" 
 						+ clientSocket.getLocalPort()+".");
-						String answer = responder.generateResponse(database, injector, payload, filePath, fileToRead, random);
+						String toInject = database.getRandomLineFromFile(fileToRead, filePath);
+						String answer = responder.generateResponse(toInject, injector, payload, random);
 
 						System.out.println("Payload to deliver: " + payload);
 						output.println(answer);

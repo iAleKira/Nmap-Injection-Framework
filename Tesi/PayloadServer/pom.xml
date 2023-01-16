@@ -2,9 +2,19 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>PayloadServer</groupId>
   <artifactId>PayloadServer</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.1-SNAPSHOT</version>
   <name>PayloadServer</name>
   <description>Server that responds with payloads</description>
+   <developers>
+        <developer>
+            <name>Alessandro Bonfiglio</name>
+        </developer>
+    </developers>
+     <scm>
+        <connection>scm:git:https://github.com/iAleKira/Nmap-Injection-Framework</connection>
+        <developerConnection>scm:git:https://github.com/iAleKira/Nmap-Injection-Framework</developerConnection>
+        <url>https://github.com/iAleKira/Nmap-Injection-Framework</url>
+    </scm>
    <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -40,6 +50,11 @@
             <version>1.7.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+  	<groupId>org.cornutum.regexp</groupId>
+  	<artifactId>regexp-gen</artifactId>
+  	<version>2.0.1</version>
+	</dependency>
         <dependency>
     <groupId>org.assertj</groupId>
     <artifactId>assertj-core</artifactId>

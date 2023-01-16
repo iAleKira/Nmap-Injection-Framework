@@ -3,6 +3,8 @@ package filter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import injector.InjectionHandler;
+
 /**
  * This class implements the filter itself.
  */
@@ -40,43 +42,29 @@ public class Filter {
 	/**
 	 * This method tells whether a string can be filtered or not. If the string
 	 * doesn't match the pattern then false is returned. Otherwise the string gets
-	 * shortened to the regular expression it contains. Then it checks for strings
+	 * shortened to the regular expression it contains. Then the method checks for strings
 	 * that contain a $number (needed to make sure it contains a capture group,
 	 * strings that don't contain "\(" which is actually a parenthesis and not a
-	 * capture group, and it excludes some other strings that may cause issues
+	 * capture group), and it excludes some other strings that may cause issues
 	 * during parsing, such as octects or lookaheads. If the input string complies
 	 * to the syntax described in these conditions then true is returned, otherwise
 	 * false is.
-	 * 
-	 * @param inputPattern - The pattern used to compile the input string.
 	 * 
 	 * @param lineToFilter - line to filter.
 	 * 
 	 * @return boolean - tells whether the input string can be filtered or not.
 	 * 
-	 * 
 	 */
-	public boolean canBeFiltered(Pattern inputPattern, String lineToFilter) {
+	public boolean canBeFiltered(String lineToFilter, InjectionHandler handler) {
 		if (lineToFilter == null) {
 			throw new IllegalArgumentException("Cannot filter a null string.");
-		}
-
-		if (inputPattern == null) {
-			throw new IllegalArgumentException("Cannot filter with null pattern.");
 		}
 
 		if (!lineToFilter.matches("match \\w* m\\|\\W.*\\(.*\\w*.*\\).*\\w")) {
 			return false;
 		}
-		Matcher inputMatcher = inputPattern.matcher(lineToFilter);
-		inputMatcher.find();
-		String matchService = inputMatcher.group(); // We filter for strings like "match serviceX m|...| ..."
-		Pattern patternBars = Pattern.compile("m\\|[\\W].*\\|"); // Shorten the string so we can work into the regex
-		Matcher matcherBars = patternBars.matcher(matchService);
-		matcherBars.find();
-		String mRegex = matcherBars.group(); // m|...|
-		String restricted = mRegex.substring(3, mRegex.length() - 1); // extract what's inside |...|. What Nmap sees
-		return (includesDollarNum(matchService) && !includesFobiddenCharacters(restricted));
+		String restricted = handler.restrict(lineToFilter);
+		return (includesDollarNum(lineToFilter) && !includesForbiddenCharacters(restricted));
 	}
 
 	/**
@@ -117,7 +105,7 @@ public class Filter {
 	 * 
 	 */
 
-	boolean includesFobiddenCharacters(String regexWithoutBars) {
+	boolean includesForbiddenCharacters(String regexWithoutBars) {
 		boolean includesForbiddenChars = (regexWithoutBars.contains("\\(") || regexWithoutBars.contains("DPR")
 				|| regexWithoutBars.contains("\\x") || regexWithoutBars.contains("?:"));
 		return includesForbiddenChars;
