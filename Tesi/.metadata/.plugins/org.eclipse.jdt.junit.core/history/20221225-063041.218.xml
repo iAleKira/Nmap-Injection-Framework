@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="ResponseGeneratorTest (2)" project="PayloadServer" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="server.ResponseGeneratorTest" time="0.106">
-    <testcase name="testGeneratedResponseContainsPayload" classname="server.ResponseGeneratorTest" time="0.056"/>
-    <testcase name="testGeneratedResponseIsNotNull" classname="server.ResponseGeneratorTest" time="0.022"/>
-    <testcase name="testGeneratedResponseIsNotEmpty" classname="server.ResponseGeneratorTest" time="0.028"/>
-  </testsuite>
-</testrun>

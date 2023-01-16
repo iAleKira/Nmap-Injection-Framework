@@ -1,0 +1,37 @@
+match ftp m|^220-.*\r\n220-\r\n220 using FileZilla FileZilla Server version ([^\r\n]+)\r\n|s p/FileZilla ftpd/ v/$1/ o/Windows/ cpe:/a:filezilla-project:filezilla_server:$1/ cpe:/o:microsoft:windows/a
+match ftp m|^220 AXIS ([\d\w]+)V(\d\S+) (.*?) ready\.\n| p/AXIS $1 Webcam ftpd/ v/$2/ i/$3/ d/webcam/ cpe:/h:axis:$1/a
+match ftp m|^220 AXIS (.+) FTP Network Print Server V([-\w_.]+) | p/AXIS $1 print server ftpd/ v/$2/ d/print server/ cpe:/h:axis:$1/a
+match ftp m|^220- (.*) WAR-FTPD ([-\w.]+) Ready\r\n220 Please enter your user name\.\r\n| p/WAR-FTPD/ v/$2/ i/Name $1/ o/Windows/ cpe:/o:microsoft:windows/a
+match pop3 m|^\+OK ([-\w_.]+) Cyrus POP3 v(\S+?)[-_]?Debian\S+ server ready| p/Cyrus pop3d/ v/$2/ i/Debian/ o/Linux/ h/$1/ cpe:/a:cmu:cyrus_imap_server:$2/ cpe:/o:debian:debian_linux/ cpe:/o:linux:linux_kernel/a
+match pop3 m|^\+OK Microsoft Exchange 2000 POP3 server version (\S+).* ready\.\r\n| p/Microsoft Exchange 2000 pop3d/ v/$1/ o/Windows/ cpe:/a:microsoft:exchange_server:2000/ cpe:/o:microsoft:windows/a
+match pop3 m|^\+OK Microsoft Exchange POP3 server version (\S+) ready\r\n| p/Microsoft Exchange pop3d/ v/$1/ o/Windows/ cpe:/a:microsoft:exchange_server/ cpe:/o:microsoft:windows/a
+match pop3 m|^\+OK ([-.\w]+) POP3? MDaemon (\S+) ready <MDAEMON| p/MDaemon pop3d/ v/$2/ o/Windows/ h/$1/ cpe:/a:altn:mdaemon:$2/ cpe:/o:microsoft:windows/a
+match smtp m|^220[ -](\S+) ESMTP Merak (\d[^;]+);|i p/Merak Mail Server smtpd/ v/$2/ o/Windows/ h/$1/ cpe:/o:microsoft:windows/a
+match smtp m|^220[\s-](\S+) E?SMTP Sendmail AIX([\d.]+)/(\d[^; ]+)| p/Sendmail/ v/$3/ i/AIX $2/ o/AIX/ h/$1/ cpe:/a:sendmail:sendmail:$3/ cpe:/o:ibm:aix/a
+match smtp m|^220[\s-](\S+) E?SMTP Sendmail AIX([\d.]+)/UCB (\d[^; ]+);| p/Sendmail/ v/$3/ i/AIX $2/ o/AIX/ h/$1/ cpe:/a:sendmail:sendmail:$3/ cpe:/o:ibm:aix/a
+match smtp m|^220-InterScan Version (\S+) .*Ready\r\n220 ([-.+\w]+) Microsoft ESMTP MAIL Service, Version: ([\d.]+) ready at| p/Trend Micro InterScan/ v/$1/ i/on Microsoft ESMTP $3/ o/Windows/ h/$2/ cpe:/o:microsoft:windows/a
+match smtp m|^220[-\s](\S+) running Eudora Internet Mail Server (\d\S+)| p/Eudora smtpd/ v/$2/ o/Windows/ h/$1/ cpe:/o:microsoft:windows/a
+match smtp m|^220[-\s](\S+) running Eudora Internet Mail Server X (\d\S+)\r\n| p/Eudora smtpd/ v/$2/ o/Mac OS X/ h/$1/ cpe:/o:apple:mac_os_x/a
+match smtp m|^220 ([\w_.-]+) ESMTP ispCP (.*) OMEGA Managed\r\n| p/Postfix smtpd/ i/ispCP OMEGA $2/ h/$1/ cpe:/a:postfix:postfix/a
+match ssh m|^SSH-([\d.]+)-OpenSSH_([\w._-]+)[ -]{1,2}Debian[ -_]([^\r\n]+)\r?\n| p/OpenSSH/ v/$2 Debian $3/ i/protocol $1/ o/Linux/ cpe:/a:openbsd:openssh:$2/ cpe:/o:debian:debian_linux/ cpe:/o:linux:linux_kernel/a
+match ssh m|^SSH-([\d.]+)-OpenSSH_([\w._-]+) Raspbian-([^\r\n]+)\r?\n| p/OpenSSH/ v/$2 Raspbian $3/ i/protocol $1/ o/Linux/ cpe:/a:openbsd:openssh:$2/ cpe:/o:linux:linux_kernel/a
+match finger m|^\r\nIntegrated port\r\nPrinter Type: Lexmark ([^\r\n]+)\r\n| p/Lexmark $1 printer fingerd/ d/printer/ cpe:/h:lexmark:$1/a
+match finger m|^\r\nUSB port \d+\r\nPrinter Type:  Photo AIO Printer (\w+)\r\nPrint Job Status: ([^\r\n]+)\r\n| p/Dell Photo AIO $1 printer fingerd/ i/Status $2/ d/printer/ cpe:/h:dell:photo_aio_$1/a
+match http m|^HTTP/1\.1 \d\d\d .*\r\nDate: .*\r\nServer: HP-UX_Apache-based_Web_Server/(\d[-.\w]+) (.*)\r\n| p/HP Apache-based httpd/ v/$1/ i/$2/ o/HP-UX/ cpe:/h:hp:apache-based_web_server:$1/ cpe:/o:hp:hp-ux/a
+match http m|^HTTP/1\.0 401 Unauthorized\r\nServer: Embedded HTTP Server ([\w._-]+)\r\nWWW-Authenticate: Basic realm=\"([^"]+)\".*\r\n\r\n<HTML><HEAD><TITLE>401 Unauthorized</TITLE></HEAD>\n<BODY BGCOLOR=\"#ffffff\"><H4>401 Unauthorized</H4></BODY></HTML>\n|s p/Embedded HTTP Server/ v/$1/ i/D-Link DWL-624 WAP http config; name $2/ d/WAP/ cpe:/h:dlink:dwl-624/a
+match http m|^HTTP/1\.0 401 Unauthorized\r\nWWW-Authenticate: Basic realm=\"(MR[-.+\w]+)\"\r\nServer: Embedded HTTPD v(\d[-.\w]+), (.*)\r\n| p/Embedded HTTPD/ v/$2/ i/Netgear $1 WAP http config; $3/ d/WAP/ cpe:/h:netgear:$1/a
+match http m|^HTTP/1\.0 \d\d\d .*\r\nServer: HTTPd-WASD/([-.\w]+) OpenVMS/(.*)\r\n| p/WASD httpd/ v/$1/ i/$2/ o/OpenVMS/ cpe:/o:hp:openvms/a
+match http m|^HTTP/1\.1 \d\d\d .*\r\nServer: HTTPd-WASD/([-.\w]+) OpenVMS/(.*)\r\n| p/WASD httpd/ v/$1/ i/$2/ o/OpenVMS/ cpe:/o:hp:openvms/a
+match http m|^HTTP/1\.0 \d\d\d .*\r\nConnection:close\r\nHost:([-\w_.]+)\r\nServer:WebSVR Version ([^\r\n]+)\r\n| p/WebSVR httpd/ v/$2/ o/Windows/ h/$1/ cpe:/o:microsoft:windows/a
+match http m|^HTTP/1\.1 \d\d\d .*\r\nServer: WatchGuard Firewall\r\nwww-authenticate: Digest realm=\"WatchGuard SOHO (.+) Configuration\"| p/WatchGuard SOHO $1 http config/ d/firewall/ cpe:/h:watchguard:soho_$1/a
+match http m|^HTTP/1\.1 \d\d\d .*\r\nServer: ml_www/(.*)\r\n| p/ml_www WinAmp control httpd/ v/$1/ o/Windows/ cpe:/o:microsoft:windows/a
+match http m|^HTTP/1\.0 \d\d\d .*\r\nConnection: close\r\nServer: Gigaset ([^\r\n]+)\r\n| p/Siemens Gigaset $1 WAP http config/ d/WAP/ cpe:/h:siemens:gigaset_$1/a
+match http m|^HTTP/1\.1 \d\d\d .*\r\nConnection: Keep-Alive\r\nServer: Siemens Gigaset ([^\r\n]+)\r\n| p/Siemens Gigaset $1 WAP http config/ d/WAP/ cpe:/h:siemens:gigaset_$1/a
+match http m|^HTTP/1\.[01] \d\d\d .*\r\nServer: Ethernut ([^\r\n]+)\r\n| p/Ethernut demo httpd/ v/$1/ o|Nut/OS| cpe:/o:ethernut:nut_os/a
+match http m|^HTTP/1\.0 200 OK\r\nServer: NetPort Software ([\w._-]+)\r\nDate: .*\r\nContent-type: text/html\r\n\r\n<html>\n<head>\n<title>(.*) - VSX 7000A</title>| p/NetPort httpd/ v/$1/ i/Polycom VSX 7000A http config; name $2/ d/webcam/ cpe:/h:polycom:vsx_7000a/a
+match http m|^HTTP/1\.0 200 OK\r\nServer: Apache/0\.6\.5\r\n.*<title>Web Server . Gigaset (\S+) WLAN dsl</title>|s p/Siemens Gigaset $1 WAP http config/ d/WAP/ cpe:/h:siemens:gigaset_$1/a
+match http m|^HTTP/1\.0 200 OK\r\nServer: Web Switch\r\nConnection: close\r\nContent-Type: text/html\r\n\r\n<script language=JavaScript><!--\nvar g_Lan=\d+;\nvar stitle = "([^"]+)";| p/TP-LINK $1 switch httpd/ d/switch/ cpe:/h:tp-link:$1/a
+match http m|^HTTP/1\.1 200 OK\r\nConnection: close\r\nContent-Type: text/html\r\nCache-Control:no-cache\r\nPragma:no-cache\r\nExpires:[smtwf].*\r\n\r\n<!DOCTYPE html>\n<script>\nvar g_Lan=\d+,g_level=\d+,g_year=\d+,g_title='([^']+)';| p/TP-LINK $1 switch http admin/ d/switch/ cpe:/h:tp-link:$1/a
+match http m|^HTTP/1\.1 200 OK\r\nDate: [A-W]{3}, [^\r\n]*\r\nConnection: \r\nServer: HTTP Server 1\.0\r\nContent-Length: \d+\r\nX-Frame-Options: SAMEORIGIN\r\nX-Content-Type-Options: nosniff\r\nContent-Type: text/html; charset=gb2312\r\nSet-Cookie: SESSIONID=[^\r\n&]*&[^\r\n&]*&HUAWEI Eudemon([^\r\n&]+)&| p/Huawei Eudemon $1 firewall httpd/ d/firewall/ cpe:/h:huawei:eudemon_$1/a
+match rtsp m|^RTSP/1\.0 400 Bad Request\r\nServer: Microsoft Application Virtualization Server/([\w._-]+) \[([^]]+)\]\r\nDate: .*\r\n\r\n| p/Microsoft Application Virtualization Server rtspd/ v/$1/ i/$2/ o/Windows/ cpe:/o:microsoft:windows/a
+match http m|^HTTP/1\.1 401 Unauthorized\r\nAccept-Ranges: bytes\r\nContent-Length: 0\r\nWww-Authenticate: Basic realm="([^"]+)"\r\nSet-Cookie: com\.apple\.servermgrd=.*\r\nDate: .*\r\n\r\n| p/Apple Server Admin/ o/Mac OS X/ h/$1/ cpe:/o:apple:mac_os_x/a
