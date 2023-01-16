@@ -3,10 +3,10 @@ This project is based upon RevOK prototype developed by Andrea Valenza, Gabriele
 
 This framework is designed to exploit vulnerabilities of the well known scanning tool Nmap.
 Developed in Java, it consists of 2 executables:
-1. Injector_server.jar
+1. Nif.jar (Injector_server.jar)
 2. All_payloads_filter.jar
 
-Injector_server.jar sets up a server listening on certain ports, waiting for incoming connections by a scanner.
+Nif.jar sets up a server listening on certain ports, waiting for incoming connections by a scanner.
 Once it receives a request from the client, the server delivers the answer with a proper nmap output formula and injects the web client reading the output.
 
 # How does it work:
@@ -30,10 +30,10 @@ We obtained a 37 lines file, and we can see some results. This means there are 3
 
 # Update 25/12/22
 
-You can now launch full program (both All_payloads_filter and Injector_server at the same time) through script.sh.
+You can now launch full program (both All_payloads_filter and Nif at the same time) through script.sh.
 ![scriptsh working](https://user-images.githubusercontent.com/89973113/209472628-0fb9c98a-fed1-4926-9118-47da7b9571da.png)
 
-You can now input a payload file to Injector_server.jar. Server will extract a random payload to deliver from input file.
+You can now input a payload file to Nif.jar. Server will extract a random payload to deliver from input file.
 ![servinput](https://user-images.githubusercontent.com/89973113/212331965-290f684c-fa8d-41b8-81c1-b267af5f5a8f.png)
 In green you can see the input file, in blue the payload that got selected to be delivered, in red the delivery.
 
