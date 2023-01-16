@@ -34,7 +34,7 @@ You can now launch full program (both All_payloads_filter and Injector_server at
 ![scriptsh working](https://user-images.githubusercontent.com/89973113/209472628-0fb9c98a-fed1-4926-9118-47da7b9571da.png)
 
 You can now input a payload file to Injector_server.jar. Server will extract a random payload to deliver from input file.
-![server with input](https://user-images.githubusercontent.com/89973113/209472701-a13000ed-21db-48a4-89fc-997ee33c016b.png)
+![servinput](https://user-images.githubusercontent.com/89973113/212331965-290f684c-fa8d-41b8-81c1-b267af5f5a8f.png)
 In green you can see the input file, in blue the payload that got selected to be delivered, in red the delivery.
 
 # Update 10/01/23
@@ -44,11 +44,11 @@ You can now filter the default file (top-services-probes.txt) by a payload of ch
 
 # BeEF
 
-NIF can work with BeEF by delivering a payload that gets the scanner's browser hooked to the scanned target's BeEF console. As you can see from the image, we replicate the case in an internal environment for educational purpose.
+NIF can work with BeEF by delivering a payload that gets the scanner's browser hooked to the scanned target's BeEF console. As you can see from the image, we replicate the case in an internal environment by using 2 Kali machines in the same network, for educational purpose.
 
 Step 1: The author starts the scan over the IP address and saves the results in an HTML file.
 
-![beef1](https://user-images.githubusercontent.com/89973113/211528728-01978586-a59d-47eb-9510-13e7d6616196.png)
+![beef1mod](https://user-images.githubusercontent.com/89973113/211811047-ab79574b-6276-4ddf-bf47-f902ce665445.png)
 
 Step 2: The author opens the scan file to check results, and its browser gets hooked.
 
@@ -58,10 +58,13 @@ Step 3: Beef can now launch commands on the browser: let's prove it.
 
 ![beef3](https://user-images.githubusercontent.com/89973113/211529061-6e5bbbe9-0d0c-46a4-a7b7-d341cf79a1da.png)
 
+# Docker
+
+You can pull the latest version of the docker image of the tool here : https://hub.docker.com/r/alekira/nmap_injection_framework
+
 # Having issues with jar files on Linux? 
 
 Try running: java -jar ./filename.jar or use script.sh directly for default settings usage.
-
 
 # Libraries used: 
 
