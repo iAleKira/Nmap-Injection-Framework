@@ -46,7 +46,7 @@ public class Printer {
 		switch (args.length) {
 		case 0:
 			filter = new Filter("top-services-probes.txt", "injectableProbes//injectable-service-probes.txt",
-					"<>|ale=/'-()[] 5rt%\"’\\$&#x`*~+-_.,:;?!@OR^{¼¾¢0£¹¬`§°ç€¶");
+					"<>|ale=/'-()[] 5rt%\"’\\$&#x`*~+-_.,:;?!@OR^{}¼¾¢0£¹¬`§°ç€¶");
 			break;	
 		case 1:
 			filter = new Filter("top-services-probes.txt", "injectableProbes//injectable-service-probes.txt",
@@ -75,8 +75,8 @@ public class Printer {
 					}
 					if (filter.canBeFiltered(readLine, handler)) {
 						String restricted = handler.restrict(readLine);
-						String injected = handler.extractInjectionGroup(restricted, payload);
-						if (!injected.equals("no match found")) {
+						String injectedGroup = handler.extractInjectionGroup(restricted, payload);
+						if (!injectedGroup.isEmpty()) {
 							System.out.println(readLine);
 						}
 					}

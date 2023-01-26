@@ -42,7 +42,7 @@ public class InjectionHandler {
 		}
 
 	} while (backup.contains("("));
-		return "no match found";
+		return "";
 	}
 
 	/**

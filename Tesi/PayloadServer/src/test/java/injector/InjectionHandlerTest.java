@@ -36,7 +36,8 @@ public class InjectionHandlerTest {
 	public void testExtractInjectionGroupNoMatchFound(){
 		String restricted = "SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]\\r?\\n";
 		String captureGroup = builder.extractInjectionGroup(restricted, payload);
-		assertEquals("no match found", captureGroup);
+		assertEquals("", captureGroup);
+		assertTrue(captureGroup.isEmpty());
 		assertTrue(!payload.matches(captureGroup));
 	}
 	
@@ -44,7 +45,8 @@ public class InjectionHandlerTest {
 	public void testExtractInjectionGroupNestedCapture(){
 		String restricted = "SSH-([\\d.]+([\\w._-]+))-OpenSSH_[ -]{1,2}Debian[ -_]\\r?\\n";
 		String captureGroup = builder.extractInjectionGroup(restricted, payload);
-		assertEquals("no match found", captureGroup);
+		assertEquals("", captureGroup);
+		assertTrue(captureGroup.isEmpty());
 		assertTrue(!payload.matches(captureGroup));
 	}
 }
