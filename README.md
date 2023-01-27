@@ -48,15 +48,15 @@ NIF can work with BeEF by delivering a payload that gets the scanner's browser h
 
 Step 1: The author starts the scan over the IP address and saves the results in an HTML file.
 
-![beef1mod](https://user-images.githubusercontent.com/89973113/211811047-ab79574b-6276-4ddf-bf47-f902ce665445.png)
+![beef1](https://user-images.githubusercontent.com/89973113/215110126-183451d5-3877-4540-83bc-9b9ece576b5e.png)
 
 Step 2: The author opens the scan file to check results, and its browser gets hooked.
 
-![beef2](https://user-images.githubusercontent.com/89973113/211528960-5231e2ce-a7c5-4142-b2b3-5ad80cfde940.png)
+![beef2](https://user-images.githubusercontent.com/89973113/215110165-bba9b7b4-452d-45b9-8535-d18914d50100.png)
 
 Step 3: Beef can now launch commands on the browser: let's prove it.
 
-![beef3](https://user-images.githubusercontent.com/89973113/211529061-6e5bbbe9-0d0c-46a4-a7b7-d341cf79a1da.png)
+![beef3](https://user-images.githubusercontent.com/89973113/215110192-9c417778-73c0-4b46-9779-3b16f02ddbfa.png)
 
 # Docker
 
