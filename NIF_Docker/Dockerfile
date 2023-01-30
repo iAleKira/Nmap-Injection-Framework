@@ -7,4 +7,3 @@ EXPOSE 21
 EXPOSE 22
 EXPOSE 25
 EXPOSE 80
-CMD ["java", "-jar", "./Nif.jar"]
