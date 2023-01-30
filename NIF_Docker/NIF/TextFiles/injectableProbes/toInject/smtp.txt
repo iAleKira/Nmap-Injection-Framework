@@ -1,1 +1,0 @@
-match smtp m|^220 ([\w_.-]+) ESMTP ispCP (.*) OMEGA Managed\r\n| p/Postfix smtpd/ i/ispCP OMEGA $2/ h/$1/ cpe:/a:postfix:postfix/a
