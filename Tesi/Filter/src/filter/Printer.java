@@ -7,35 +7,31 @@ import injector.InjectionHandler;
 /**
  * @author Alessandro Bonfiglio.
  * 
- *         This class is All_payloads_filter.jar main class. It filters an
- *         inputFile line by line, into an outputFile by a certain payload. User
- *         can check whether a file can be injected with a payload of choice or
- *         not.
+ * This class is All_payloads_filter.jar main class. It filters an
+ * inputFile line by line, into an outputFile by a certain payload. User
+ * can check whether a file can be injected with a payload of choice or not.
  * 
- *         Number of input arguments. 0: uses default settings. 1: uses default paths and custom payload. 
- *         3: uses user input files and payload.
+ * Number of input arguments. 0: uses default settings. 1: uses default paths and custom payload. 
+ * 3: uses user input files and payload.
  * 
- *         It then implements the filtering algorithm. An ExploitBuilder is
- *         needed, therefore it uses ExploitBuilder.jar library. The input file
- *         is read line by line, and for each line the filter checks if it can
- *         be filtered, according to the implementation, by the method
- *         {@link canBeFiltered}. If the return value is true, it then proceeds
- *         restricting the string in between pipes symbols | | and then inject
- *         it with the payload. If the injection succeeds, then the original
- *         string from the file is saved in the output file. If the injection
- *         fails, resulting in an empty string, it discards it.
+ * It then implements the filtering algorithm. An ExploitBuilder is
+ * needed, therefore it uses InjectionHandler.jar library. The input file
+ * is read line by line, and for each line the filter checks if it can
+ * be filtered, according to the implementation, by the method
+ * {@link canBeFiltered}. If the return value is true, it then proceeds
+ * restricting the string in between pipes symbols | | and then inject
+ * it with the payload. If the injection succeeds, then the original
+ * string from the file is saved in the output file. If the injection
+ * fails, resulting in an empty string, it discards it.
  * 
  * @throws IOException: All_payloads_filter.jar, as default, is meant to be
- *                      launched from a fixed directory together with the file
- *                      it filters. - If the file is not found in the same
- *                      directory as Filter.jar: a FileNotFoundException is
- *                      triggered and the executable exits with error: "File
- *                      top-services-probes.txt not found. File needs to be
- *                      included...". - If the input file, default:
- *                      top-services-probes.txt, is found in the same directory
- *                      as Filter.jar but there is no output file then a
- *                      FileNotFoundException is triggered and the executable
- *                      exits with error: "Output path needs to exist..".
+ * launched from a fixed directory together with the file it filters. 
+ * - If the file is not found in the same directory as All_payloads_filter.jar:
+ * a FileNotFoundException is triggered and the executable exits with error: 
+ * "File top-services-probes.txt not found. File needs to be included...". 
+ * - If the input file, default: top-services-probes.txt, is found in the same directory
+ * as All_payloads_filter.jar but there is no output file then a FileNotFoundException is triggered and
+ * the executable exits with error: "Output path needs to exist..".
  */
 public class Printer {
 
@@ -57,7 +53,7 @@ public class Printer {
 			break;
 		default:
 			System.err.println(
-					"Wrong number of arguments. Please insert three, one, or none.\n Usage: ./Filter.jar. inputFile outputFile \"payload\"");
+					"Wrong number of arguments. Please insert three, one, or none.\n Usage: ./All_payloads_filter.jar inputFile outputFile \"payload\"");
 			System.exit(1);
 		}
 		String payload = filter.getPayload();
@@ -88,7 +84,7 @@ public class Printer {
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("File " + filter.getInputPath()
-					+ " not found. File needs to be included in the same directory path as Filter.jar.");
+					+ " not found. File needs to be included in the same directory path as All_payloads_filter.jar.");
 		}
 	}
 }

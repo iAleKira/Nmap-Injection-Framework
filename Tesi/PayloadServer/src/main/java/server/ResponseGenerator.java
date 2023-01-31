@@ -16,9 +16,9 @@ public class ResponseGenerator {
 	/**
 	 * This method generates the response from the server to the client.
 	 * @param toInject - the string to inject
-	 * @param injector - the InjectionHandler injector that will inject the payload into the string.
+	 * @param injector - the InjectionHandler injector that will aid the injection.
 	 * @param payload  - the payload to inject. 
-	 * @param random - random object to allow parsing.
+	 * @param random - Random object to allow parsing.
 	 * @return injected - the string injected with the payload
 	 */
 	

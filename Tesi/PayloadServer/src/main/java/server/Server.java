@@ -1,8 +1,8 @@
 package server;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.HashMap;
 
 import org.cornutum.regexpgen.RandomGen;
 import org.cornutum.regexpgen.random.RandomBoundsGen;
@@ -22,32 +22,33 @@ import java.nio.channels.SocketChannel;
  * 
  * This class hosts the main method and therefore how the server, which
  * is listening on certain ports for an incoming connection, will
- * interact with its client. The response given by the the server is
- * defined in the {@link respond} method.
+ * interact with its clients. The response given by the the server is
+ * defined in the {@link generateResponse} method.
  * 
- * The Server class makes use of different objects: -
- * {@link InjectionHandler} injector: which injects the response string
- * with a payload. - {@link ResponseGenerator} responder: which
- * generates a response to return. The server also makes use of: -
- * Selector selector: to make ports interact with the client. - String
- * payload: string to inject in the response.
+ * The Server class makes use of different objects: 
+ * - {@link InjectionHandler} injector: which identifies the capture group of the string
+ * injectable by a payload. 
+ * - {@link ResponseGenerator} responder: which generates a response to return. 
+ * The server also makes use of: 
+ * - Selector selector: multiplexor to open multiple connections on the same port. 
+ * - String payload: string to inject in the response.
  * 
  * @param args: no parameters are allowed.
  * 
  * 
  * @throws IOException: The server has restrictions. The path in
  * which the server will look for files is:
- * Tesi/TextFiles/InjectableProbes/toInject/. If the server is not
- * launched from its directory then there will be troubles tracking
+ * TextFiles/InjectableProbes/toInject/. If the server is not
+ * launched from the same directory as TextFiles then there will be troubles tracking
  * the files containing the payloads in the file system. So to
  * avoid this the user is restricted to a fixed path with an
  * IOException.
  * 
- * This method will setup a Selector, which will be used to select
- * the appropriate output to return to the client, and a
+ * This class setups a Selector, used to open more connections 
+ * on the same port and select the appropriate client to respond to, and a
  * SocketServerChannel to listen for incoming connections on all
- * ports contained in the map at the same time. The ports listen to
- * are those described in the {@link fillMap} method from class
+ * ports contained in the map at the same time. The listening ports are those
+ * described in the {@link fillMap} method from class
  * {@link Database}. The iteration goes through the keys of the
  * selector: each time a connection is made on port x, the server
  * will reply with an answer suitable for port x.
@@ -77,8 +78,8 @@ public class Server {
 			break;
 		default:
 			System.err.println(
-					"Cannot locate " + args[0] + ". Usage : ./Injector_server.jar inputFile.\nMake sure the file is in the same"
-							+ " directory as the jar file.\nExample: ./Injector_server.jar Payloads//example_payloads.txt.");
+					"Cannot locate " + args[0] + ". Usage : ./Nif.jar inputFile.\nMake sure the path is in the same"
+							+ " directory as the jar file.\nExample: ./Nif.jar Payloads//example_payloads.txt.");
 			System.exit(1);
 		}
 
@@ -132,8 +133,8 @@ public class Server {
 			}
 		} catch (IOException e) {
 			System.out.println(
-					"An error occurred when retrieving data from database.\nMake sure server is launched in Tesi "
-							+ "directory and that the input file is a correct path.");
+					"An error occurred when retrieving data from database.\nMake sure Nif.jar is launched in the same "
+							+ "directory as "+ payloadPath + " and TextFiles.");
 		}
 	}
 }

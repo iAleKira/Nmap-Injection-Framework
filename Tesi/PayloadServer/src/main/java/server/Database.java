@@ -24,7 +24,7 @@ public class Database {
 	 * method the user can set the server to listen on more ports and its relative
 	 * service, and so, the file that will be accessed, but it will be needed to add
 	 * the relative .txt file in the directory:
-	 * "Tesi/TextFiles/injectableProbes/toInject/". The current services implemented
+	 * "TextFiles/injectableProbes/toInject/". The current services implemented
 	 * in the map are those that can injected by any payload.
 	 * 
 	 * @param map - It's the map that needs to be filled.

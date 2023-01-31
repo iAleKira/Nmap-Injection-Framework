@@ -55,7 +55,7 @@ public class InjectionHandler {
 	 * 
 	 * @param toRestict - string to restrict.
 	 * 
-	 * @return restrictedString - string in between | |.
+	 * @return restrictedString - string in between |^ |.
 	 * 
 	 */
 	public String restrict(String toRestict) {

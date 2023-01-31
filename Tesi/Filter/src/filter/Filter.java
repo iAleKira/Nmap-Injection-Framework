@@ -77,7 +77,7 @@ public class Filter {
 
 	boolean includesDollarNum(String matchService) {
 		Pattern pDollarNum = Pattern.compile("\\$\\d"); // Pattern to include '$1', '$2'.. etc
-		Matcher includeDollarNum = pDollarNum.matcher(matchService); // This way we only include strings that contain
+		Matcher includeDollarNum = pDollarNum.matcher(matchService); // This way we only include strings that contain $num
 		boolean hasDollarNum = includeDollarNum.find();
 		return hasDollarNum;
 	}
@@ -95,13 +95,15 @@ public class Filter {
 	 * \x: troublesome for matching: byte value into string.
 	 * 
 	 * \0 octets can trigger an exception: java.util.regex.PatternSyntaxException:
-	 * Illegal octal escape sequence ?: : lookahead are unsupported by the parser.
+	 * Illegal octal escape sequence. This case is handled in \x case.
+	 * 
+	 * ?:: lookaheads are unsupported by the parser.
 	 * This case is handled in \x case.
 	 * 
-	 * @param regexWithoutBars - string contained inside m|...| ...".
+	 * @param regexWithoutBars - string contained inside m|^...|".
 	 * 
 	 * @return includesForbiddenChars - whether the string includes a forbidden
-	 *         characters or not.
+	 *         character or not.
 	 * 
 	 */
 

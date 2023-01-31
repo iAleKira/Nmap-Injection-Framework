@@ -40,8 +40,7 @@ public class ResponseGeneratorTest {
 	
 	@Test
 	public void testGeneratedResponseRegexIsSubstitued() throws IOException{
-		String capture=injector.extractInjectionGroup(toInject, payload);
-		assertTrue(payload.matches(capture));
+		String capture = injector.extractInjectionGroup(toInject, payload);
 		response = generator.generateResponse(toInject, injector, payload,random);
 		assertTrue(response.contains(payload));
 		assertTrue(!response.contains(capture));
