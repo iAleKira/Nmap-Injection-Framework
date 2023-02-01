@@ -3,7 +3,6 @@ match ssh
 match telnet 
 match smtp 
 match dns
-match finger
 match http
 match kerberos
 match nntp

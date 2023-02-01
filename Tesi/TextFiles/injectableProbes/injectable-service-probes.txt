@@ -5,8 +5,6 @@ match ftp m|^220- (.*) WAR-FTPD ([-\w.]+) Ready\r\n220 Please enter your user na
 match smtp m|^220 ([\w_.-]+) ESMTP ispCP (.*) OMEGA Managed\r\n| p/Postfix smtpd/ i/ispCP OMEGA $2/ h/$1/ cpe:/a:postfix:postfix/a
 match ssh m|^SSH-([\d.]+)-OpenSSH_([\w._-]+)[ -]{1,2}Debian[ -_]([^\r\n]+)\r?\n| p/OpenSSH/ v/$2 Debian $3/ i/protocol $1/ o/Linux/ cpe:/a:openbsd:openssh:$2/ cpe:/o:debian:debian_linux/ cpe:/o:linux:linux_kernel/a
 match ssh m|^SSH-([\d.]+)-OpenSSH_([\w._-]+) Raspbian-([^\r\n]+)\r?\n| p/OpenSSH/ v/$2 Raspbian $3/ i/protocol $1/ o/Linux/ cpe:/a:openbsd:openssh:$2/ cpe:/o:linux:linux_kernel/a
-match finger m|^\r\nIntegrated port\r\nPrinter Type: Lexmark ([^\r\n]+)\r\n| p/Lexmark $1 printer fingerd/ d/printer/ cpe:/h:lexmark:$1/a
-match finger m|^\r\nUSB port \d+\r\nPrinter Type:  Photo AIO Printer (\w+)\r\nPrint Job Status: ([^\r\n]+)\r\n| p/Dell Photo AIO $1 printer fingerd/ i/Status $2/ d/printer/ cpe:/h:dell:photo_aio_$1/a
 match http m|^HTTP/1\.1 \d\d\d .*\r\nDate: .*\r\nServer: HP-UX_Apache-based_Web_Server/(\d[-.\w]+) (.*)\r\n| p/HP Apache-based httpd/ v/$1/ i/$2/ o/HP-UX/ cpe:/h:hp:apache-based_web_server:$1/ cpe:/o:hp:hp-ux/a
 match http m|^HTTP/1\.0 401 Unauthorized\r\nWWW-Authenticate: Basic realm=\"(MR[-.+\w]+)\"\r\nServer: Embedded HTTPD v(\d[-.\w]+), (.*)\r\n| p/Embedded HTTPD/ v/$2/ i/Netgear $1 WAP http config; $3/ d/WAP/ cpe:/h:netgear:$1/a
 match http m|^HTTP/1\.0 \d\d\d .*\r\nServer: HTTPd-WASD/([-.\w]+) OpenVMS/(.*)\r\n| p/WASD httpd/ v/$1/ i/$2/ o/OpenVMS/ cpe:/o:hp:openvms/a

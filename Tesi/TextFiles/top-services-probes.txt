@@ -6,11 +6,6 @@ match directconnect m=<Hub-Security> You are being redirected to ([\d.]+)\|\$For
 match directconnect m=^server-version\$([\w._-]+)\|init-completion\$200\|port\$\d+\|= p/Shakespeer Direct Connect GUI/ v/$1/ o/Mac OS X/ cpe:/o:apple:mac_os_x/a
 match directconnect-admin m=^\r\nOpen DC Hub, version ([\d.]+), administrators port\.\r\nAll commands begin with '\$' and end with '\|'\.\r\nPlease supply administrators passord\.\r\n= p/OpenDCHub directconenct hub admin port/ v/$1/ o/Unix/
 match dnsix m|^DNSIX$|
-match finger m|\r\n {4}Line {5,8}User {6,8}Host\(s\) {13,18}Idle +Location\r\n| p/Cisco fingerd/ d/router/ o/IOS/ cpe:/o:cisco:ios/a
-match finger m|^OpenLDAP Finger Service\.\.\.\r\n| p/OpenLDAP fingerd/ cpe:/a:openldap:openldap/
-match finger m|^No cfingerd\.conf file present\.  Check your setup\.\n$| p/cfingerd/ i/Broken/
-match finger m|^Windows NT Version ([\d.]+) build (\d+), \d+ processors? \(.*\)\r\nFingerDW V([\d.]+) - Hummingbird Ltd\.\n| p/Hummingbird fingerd/ v/$3/ i/WinNT $1 build $2/ o/Windows NT/ cpe:/o:microsoft:windows_nt:$1/
-match finger m|^\r\nIntegrated port\r\nPrinter Type: Lexmark T642\r\nPrint Job Status:| p/Lexmark T642 printer fingerd/ d/printer/ cpe:/h:lexmark:t642/a
 match ftp m|^220 ([-/.+\w]+) FTP server \(SecureTransport (\d[-.\w]+)\) ready\.\r\n| p/Tumbleweed SecureTransport ftpd/ v/$2/ h/$1/ cpe:/a:tumbleweed:securetransport:$2/
 match ftp m|^220 ([-/.+\w]+) FTP server \(SecureTransport (\d[-.\w]+)\) ready\.    \r\n| p/Axway SecureTransport ftpd/ v/$2/ h/$1/ cpe:/a:axway:securetransport:$2/
 match ftp m|^220 3Com 3CDaemon FTP Server Version (\d[-.\w]+)\r\n| p/3Com 3CDaemon ftpd/ v/$1/
@@ -2836,29 +2831,6 @@ softmatch telnet m|^\xff\xfd\x01\xff\xfd!\xff\xfb\x01\xff\xfb\x03[^\xff]| p/Busy
 softmatch telnet m|^\xff\xfd\x18$|
 softmatch telnet m=^(?:\xff(?:[\xfb-\xfe].|\xf0|\xfa..))+(?:[\0-\x7f]|$)=
 softmatch kerberos-sec m|^\0\0\0[\x40-\x90]~[\x3e-\x8e]\x30[\x3c-\x8c]\xa0\x03\x02\x01\x05\xa1\x03\x02\x01\x1e\xa4\x11\x18\x0f(\d\d\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)Z|s i/server time: $1-$2-$3 $4:$5:$6Z/
-match finger m|^Gathering system data\.\.\.\nUsername Real name                      Idletime TTY Remote console location\n| p/Cfingerd/
-match finger m|^Punix version ([\d./()]+) - Current Time \(since boot\) \d+:\d\d:\d\d\r\nName        pid    stat   pc       cpusec    stack    pr/sy   idle    tty\r\n| p/Lantronix ETS16 fingerd/ i/Punix $1/ d/terminal server/ o/Punix/ cpe:/o:christopher_williams:punix:$1/
-match finger m|^Finger online user list request denied\.\r\n| p/SLMail fingerd/ o/Windows/ cpe:/o:microsoft:windows/a
-match finger m|^Username Real name                      Idletime TTY Remote console location\n| p/Configurable Finger-Query Daemon/ o/Unix/
-match finger m|^Login     Name       Tty      Idle  Login Time   Office     Office Phone\r\n| p/Debian fingerd/ o/Linux/ cpe:/o:debian:debian_linux/ cpe:/o:linux:linux_kernel/a
-match finger m|^\r\nIntegrated port\r\nPrinter Type: Dell Laser Printer ([-\w+.]+)\r\nPrint Job Status: (.*)\r\n| p/Dell $1 laser printer fingerd/ i/Status: $2/ d/printer/
-match finger m|^\r\nIntegrated port\r\nPrinter Type: Dell ([-\w+.]+) Laser Printer\r\nPrint Job Status: (.*)\r\n| p/Dell $1 laser printer fingerd/ i/Status: $2/ d/printer/
-match finger m|^This is finger server\r\n\r\nPlease use username@domain format\.\r\n| p/ArGoSoft Mail fingerd/ o/Windows/ cpe:/o:microsoft:windows/a
-match finger m|^This is ([-\w_.]+) finger server\.\r\n\r\nPlease use username@domain format\.\r\n| p/ArGoSoft Mail fingerd/ o/Windows/ h/$1/ cpe:/o:microsoft:windows/a
-match finger m|^\r\nIntegrated port\r\nPrinter Type: Lexmark ([^\r\n]+)\r\n| p/Lexmark $1 printer fingerd/ d/printer/ cpe:/h:lexmark:$1/a
-match finger m|^finger: /var/adm/lastlog open error\nNo one logged on\r\n| p/Solaris 10 fingerd/ i/Nobody logged in/ o/Solaris/ cpe:/o:sun:sunos:5.10/
-match finger m|^finger: /var/adm/lastlog open error\nLogin       Name| p/Solaris 10 fingerd/ i/Somebody logged in/ o/Solaris/ cpe:/o:sun:sunos:5.10/
-match finger m|^finger: /usr/adm/lastlog open error\nLogin +Name +TTY Idle +When +Office\r\n| p|OSF/1 fingerd| o|OSF/1| cpe:/o:dec:osf_1/
-match finger m|^\r\nUSB port \d+\r\nPrinter Type:  Photo AIO Printer (\w+)\r\nPrint Job Status: ([^\r\n]+)\r\n| p/Dell Photo AIO $1 printer fingerd/ i/Status $2/ d/printer/ cpe:/h:dell:photo_aio_$1/a
-match finger m|^\nDebian GNU/Linux      Copyright \(c\) 1993-1999 Software in the Public Interest\n\n                 Your site has been rejected for some reason\.\n\n         This may be caused by a missing RFC 1413 identd on your site\.\n\n| p/Debian Cfingerd/ o/Linux/ cpe:/a:debian:cfingerd/ cpe:/o:debian:debian_linux/ cpe:/o:linux:linux_kernel/
-match finger m|^Debian GNU/Linux      Copyright \(C\) 1993-1999 Software in the Public Interest\n.*You haven't specified a user\.\n\n               A general listing is not provided to the public\.|s p/Debian Cfingerd/ o/Linux/ cpe:/a:debian:cfingerd/ cpe:/o:debian:debian_linux/ cpe:/o:linux:linux_kernel/a
-match finger m|^\r\nPrinter Type: Lexmark Optra LaserPrinter\r\n| p/Lexmark Optra LaserPrinter fingerd/ d/printer/
-match finger m|^MSS485 Version V([\w._/-]+)\(([\w._-]+)\) - Time Since Boot:| p/Lantronix MSS485 serial to ethernet bridge fingerd/ v/$1 $2/ d/bridge/
-match finger m|^Login     Name                Tty      Idle  Login Time   Office     Office Phone\n| p/xfingerd/
-match finger m|^Please supply a username\r\n$| p/BSD fingerd/ cpe:/a:bsd:fingerd/
-match finger m|^\nHello [\w.@-]*,\nusers currently logged in are:\n\nNAME       LINE         TIME             IDLE          PID COMMENT\n\n\r\n| p/efingerd/ i/who -uHw/ cpe:/a:radovan_garabik:efingerd/
-match finger m|^\nHello [\w.@-]*,\nusers currently logged in are:\n\n| p/efingerd/ cpe:/a:radovan_garabik:efingerd/
-match finger m|^Site: (.+)\n\nLogin     Name\n| p/MiamiDx fingerd/ i/site: $1/ o/AmigaOS/
 match ftp m|^220 Welcome to Stupid-FTPd server\.\r\n422 Too busy to play with you\.\r\n| p/Stupid-FTPd/ cpe:/a:cinek:stupid-ftpd/
 match ftp m|^220 Service ready\.\r\n501 Syntax Error\.\r\n| p/Hay Systems HSL 2.75G Femtocell ftpd/ d/WAP/ cpe:/o:hay_systems:hsl_2.75g_femtocell/
 match ftp m|^220 Welcome to TBS FTP Server\.\r\n(?:202 Command not implemented, superfluous at this site\.\r\n){2}| p/TBS embedded ftpd/ d/broadband router/
@@ -3194,32 +3166,6 @@ match telnet m|^\r\nUser ID:Password:\r\nUser ID:| p/NEC SL-series debug termina
 match telnet m|^Commands: \n\t\[\x1b\[1;32m:d\x1b\[0m\]isable \[ category \x7c module \x7c all \]\n\t\[\x1b\[1;32m:e\x1b\[0m\]nable \[ category \x7c module \x7c all \]\n\t\[\x1b\[1;32m:s\x1b\[0m\]tatus\n\t\[\x1b\[1;32m:h\x1b\[0m\]elp\n\t\[\x1b\[1;32m:q\x1b\[0m\]uit\n\x1b\[1;31m\[E\]\[EncoderSrv\] /home/leonwang/platform/([\w._-]+)/Application_IPCAM/| p/Climax IP camera text UI/ i/model: $1/ cpe:/h:climax_technology:$1/
 match telnet m|^\xff\xfb\x01\xff\xfb\x01Connected to EPSON Network Image Express !!!\r\n\r\nPassword: \r\n\r\nLogin successful \r\n| p/Epson Network Image Express telnetd/ i/no password/
 match telnet m|^\xff\xfb\x01\xff\xfb\x01Connected to EPSON Network Image Express !!!\r\n\r\nPassword: \r\n| p/Epson Network Image Express telnetd/
-match finger m|^Login name: /         \t\t\tIn real life: \?\?\?\r\n\r\nLogin name: GET       \t\t\tIn real life: \?\?\?\r\n\r\nLogin name: HTTP/1\.0  \t\t\tIn real life: \?\?\?\r\n$| p/Digital UNIX fingerd/ o/Digital UNIX/ cpe:/o:dec:digital_unix/a
-match finger m|^No such user No such user N\n$| p/Internet Rex finger server/
-match finger m|^\n Nodename:\s+(\w+)\r\n| p/IQinVision fingerd/ i/Camera/ d/webcam/ h/$1/
-match finger m|^finger: /: no such user\r?\nfinger: GET: no such user\r?\nfinger: HTTP/1\.0: no such user\r?\n$| p/FreeBSD fingerd/ o/FreeBSD/ cpe:/o:freebsd:freebsd/a
-match finger m|^No such activity\.\r\n$| p/Bay Networks Micro Annex terminal server fingerd/ d/terminal server/
-match finger m|^GET / HTTP/1\.0 is not known at this site\.\r\n$| p|Mercury/32 fingerd| o/Windows/ cpe:/o:microsoft:windows/a
-match finger m|^That user does not want to be fingered\.\n$| p/ffingerd/
-match finger m|^finger: GET: no such user\.\nfinger: /: no such user\.\nfinger: HTTP/1\.0: no such user\.\n$| p|BSD/Linux fingerd| o/Unix/
-match finger m|^\r\nWelcome to Linux version (\d[-.\w]+) at ([-.\w]+) !\r\n\n.*\n\r\nfinger: GET: no such user\.|s p/OpenBSD fingerd/ i/ported to Linux/ o/Linux $1/ h/$2/ cpe:/o:linux:linux_kernel:$1/
-match finger m|^finger: GET: no such user.\r\nfinger: /: no such user.\r\nfinger: HTTP/1.0: no such user.\r\n$| p/Linux fingerd/ o/Linux/ cpe:/o:linux:linux_kernel/a
-match finger m|^finger: GET: no such user\nfinger: /: no such user\nfinger: HTTP/1\.0: no such user\n$| p/NetBSD fingerd/ cpe:/o:netbsd:netbsd/
-match finger m|^Login       Name               TTY         Idle    When    Where\r\nGET                   \?\?\?\r\n/                     \?\?\?\r\nHTTP/1\.0              \?\?\?\r\n$| p/Sun Solaris fingerd/ o/Solaris/ cpe:/o:sun:sunos/a
-match finger m|^Information for user 'GET\+20\+2F\+20HTTP\+2F1\.0':\r\nUnknown user\.\r\n$| p/mlfingerd/
-match finger m|^Login name: GET       \t\t\tIn real life: \?\?\?\r\n$| p/SGI IRIX or NeXTSTEP fingerd/
-match finger m|^No such user\n$| p/Windows fingerd/ o/Windows/ cpe:/o:microsoft:windows/a
-match finger m|^MSS100 Version V([\d/.]+)\(\d+\) - Time Since Boot: \d+:\d\d:\d\d\r\nName        pid     stat  pc       cpusec    stack    pr/sy   idle    tty\r\n| p/Lantronix MSS100 serial interface fingerd/ v/$1/ d/specialized/
-match finger m|^finger: GET / HTTP/1\.0: no such user\n| p/efingerd/ o/Unix/ cpe:/a:radovan_garabik:efingerd/
-match finger m|^ +-;;=\n +\.;M####\+\n| p/mIRC with ircN script fingerd/ o/Windows/ cpe:/o:microsoft:windows/a
-match finger m|^User not found\r\n| p/XMail fingerd/ cpe:/a:davide_libenzi:xmail/
-match finger m|^EMail       : [-\w_.]+@([-\w_.]+)\r\n  Real Name : \?\?\r\n  Home Page : \?\?\r\n| p/XMail fingerd/ h/$1/ cpe:/a:davide_libenzi:xmail/
-match finger m|^\r\nIntegrated port\r\nPrinter Type: IBM Infoprint (.*)\r\n| p/IBM Infoprint $1 fingerd/ d/print server/ cpe:/a:ibm:infoprint_$SUBST(1," ","_")/
-match finger m|^Login name: HTTP/1\.0       In real life: \?\?\?\r\n| p/OpenVMS fingerd/ o/OpenVMS/ cpe:/o:hp:openvms/a
-match finger m|^No information available\r\n$| p/Post.Office fingerd/
-match finger m|^finger: sorry, no such user\.\n$| p/xfingerd/
-match finger m|^finger: HTTP/1\.0: no such user\.\r\n| p/BSD fingerd/ cpe:/a:bsd:fingerd/
-match finger m|^no such user here\n$| p/MiamiDx fingerd/ o/AmigaOS/
 match http-proxy m|^HTTP/1\.[01] \d\d\d (?:[^\r\n]*\r\n(?!\r\n))*?Server: Apache\r\n(?:[^\r\n]+\r\n)*?X-orenosp-filt:|s p/Orenosp reverse http proxy/
 match http m|^HTTP/1\.0 200 OK\r\n(?:[^\r\n]+\r\n)*?Server: BaseHTTP/([\w._+-]+) Python/([\w._+-]+)\r\n.*<title>Supybot Web server index</title>|s p/BaseHTTPServer/ v/$1/ i/Supybot IRC bot HTTP stats; Python $2/ cpe:/a:python:basehttpserver:$1/a cpe:/a:python:python:$2/
 match http m|^HTTP/1\.1 200 Script output follows\r\nServer: BaseHTTP/([\w._-]+) Python/([\w._-]+)\r\n.*<title>Mercurial repositories index</title>|s p/BaseHTTPServer/ v/$1/ i/Mercurial hg serve; Python $2/ cpe:/a:python:basehttpserver:$1/a cpe:/a:python:python:$2/
@@ -7830,8 +7776,6 @@ match ftp m|^220 FTP server ready\r\n500 Invalid command HELP \r\n| p/DeviceWISE
 match ftp m|^220 FTP server ready\.\r\n214- The following commands are recognized \(\* =>'s unimplemented\)\.\r\n   USER    PORT    TYPE    MLFL\*   MRCP\*   DELE    SYST    XMKD    XCUP \r\n   PASS    LPRT    STRU    MAIL\*   ALLO    CWD     FEAT    RMD     STOU \r\n   ACCT\*   EPRT    MODE    MSND\*   REST    XCWD    STAT    XRMD    SIZE \r\n   SMNT\*   PASV    RETR    MSOM\*   RNFR    LIST    HELP    PWD     MDTM \r\n   REIN\*   LPSV    STOR    MSAM\*   RNTO    NLST    NOOP    XPWD \r\n   QUIT    EPSV    APPE    MRSQ\*   ABOR    SITE    MKD     CDUP \r\n214 End\.\r\n| p/FreeBSD ftpd/ v/6.00LS/
 match ftp m|^220 .*\r\n550 Command not recognized or allowed\.\r\n$| p/CrushFTP ftpd/ cpe:/a:crushftp:crushftp/
 match ftp m|^220 .*\r\n214-The following commands are recognized \(\* ==>'s unimplemented\)\.\r\n    ABOR \r\n    ACCT \r\n    ADAT \*\r\n    ALLO \r\n    APPE \r\n    AUTH \r\n    CCC \r\n    CDUP \r\n    CWD \r\n    DELE \r\n    ENC \*\r\n    EPRT \r\n    EPSV \r\n    FEAT \r\n    HELP \r\n    HOST \r\n    LANG \r\n    LIST \r\n    MDTM \r\n    MIC \*\r\n    MKD \r\n    MODE \r\n    NLST \r\n    NOOP \r\n    OPTS \r\n    PASS \r\n    PASV \r\n    PBSZ \r\n    PORT \r\n    PROT \r\n    PWD \r\n    QUIT \r\n    REIN \r\n    REST \r\n    RETR \r\n    RMD \r\n    RNFR \r\n    RNTO \r\n    SITE \r\n    SIZE \r\n    SMNT \r\n    STAT \r\n    STOR \r\n    STOU \r\n    STRU \r\n    SYST \r\n    TYPE \r\n    USER \r\n    XCUP \r\n    XCWD \r\n    XMKD \r\n    XPWD \r\n    XRMD \r\n214 HELP command successful\.\r\n| p/IIS ftpd/ v/7/ o/Windows/ cpe:/a:microsoft:internet_information_services:7/ cpe:/o:microsoft:windows/a
-match finger m|^iFinger v(\d[-.\w]+)\n\n| p/IcculusFinger/ v/$1/
-match finger m|^\n    ----------------------------------------------------------------------\n                        Sorry, that user doesn't exist\.\n| p/Stock and Trade Finger Server fingerd/
 match http m|^HTTP/1\.1 401 Unauthorized\r\nWWW-Authenticate: Basic realm=\"esecsrva\"\r\n\r\n$| p/IBM Director wmicimserver httpd/ cpe:/a:ibm:director/
 match http m|^HTTP/1\.1 401 Unauthorized\r\nWWW-Authenticate: Basic realm=\"ANLYX2\"\r\n\r\n$| p/IBM Director wmicimserver httpd/ cpe:/a:ibm:director/
 match http m|^HTTP/1\.0 500 Internal Server Error\r\nConnection: Close\r\nContent-Type: text/html\r\n.*<p>java\.lang\.Exception: Invalid request: HELP</p>|s p/Dell PowerEdge OpenManage Server Administrator httpd/ o/Windows/ cpe:/a:dell:openmanage_server_administrator/ cpe:/o:microsoft:windows/a
