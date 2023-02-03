@@ -30,9 +30,6 @@ We obtained a 37 lines file, and we can see some results. This means there are 3
 
 # Update 25/12/22
 
-You can now launch full program (both All_payloads_filter and Nif at the same time) through script.sh.
-![scriptsh working](https://user-images.githubusercontent.com/89973113/209472628-0fb9c98a-fed1-4926-9118-47da7b9571da.png)
-
 You can now input a payload file to Nif.jar. Server will extract a random payload to deliver from input file.
 ![servinput](https://user-images.githubusercontent.com/89973113/212331965-290f684c-fa8d-41b8-81c1-b267af5f5a8f.png)
 In green you can see the input file, in blue the payload that got selected to be delivered, in red the delivery.
@@ -41,6 +38,14 @@ In green you can see the input file, in blue the payload that got selected to be
 
 You can now filter the default file (top-services-probes.txt) by a payload of choice.
 ![update filter](https://user-images.githubusercontent.com/89973113/211525656-7257d8be-e0c5-4b9e-844a-8a8897532225.png)
+
+# Update 03/02/23
+
+You can now launch full program (both All_payloads_filter and Nif at the same time) through Framework.sh.
+![shellscript2](https://user-images.githubusercontent.com/89973113/216667093-b35e09b6-fea3-4cd3-b301-b43f74b83a59.png)
+
+You can specify up to 2 parameters to the shell script: the first being the file where to get the payloads from, the second being the payload you want to filter for.
+
 
 # BeEF
 
