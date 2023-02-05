@@ -45,6 +45,7 @@ You can now launch full program (both All_payloads_filter and Nif at the same ti
 ![shellscript2](https://user-images.githubusercontent.com/89973113/216820337-7bbd17e5-1f1b-49b9-94f8-2aee198cbc1e.png)
 
 You can specify up to 2 parameters to the shell script: the first being the file where to get the payloads from, the second being the payload you want to filter for.
+Need help? Run: ./Framework.sh --help
 
 
 # BeEF
@@ -69,7 +70,7 @@ You can pull the latest version of the docker image of the tool here : https://h
 
 # Having issues with jar files on Linux? 
 
-Try running: java -jar ./filename.jar or use script.sh directly for default settings usage.
+Try running: java -jar ./filename.jar or run Framework.sh directly for default settings usage.
 
 # Libraries used: 
 
