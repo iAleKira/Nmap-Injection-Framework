@@ -42,7 +42,7 @@ You can now filter the default file (top-services-probes.txt) by a payload of ch
 # Update 03/02/23
 
 You can now launch full program (both All_payloads_filter and Nif at the same time) through Framework.sh.
-![shellscript2](https://user-images.githubusercontent.com/89973113/216667093-b35e09b6-fea3-4cd3-b301-b43f74b83a59.png)
+![shellscript2](https://user-images.githubusercontent.com/89973113/216820337-7bbd17e5-1f1b-49b9-94f8-2aee198cbc1e.png)
 
 You can specify up to 2 parameters to the shell script: the first being the file where to get the payloads from, the second being the payload you want to filter for.
 
