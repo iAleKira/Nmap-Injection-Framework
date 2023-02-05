@@ -13,4 +13,4 @@ do
   echo "Service $i generated $lines injectable probes."
   fi
 done
- echo "Total injectable probes generated = $sum."
+ echo -e "\nTotal injectable probes generated = $sum."
