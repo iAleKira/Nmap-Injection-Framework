@@ -18,6 +18,45 @@ public class InjectionHandlerTest {
 	}
 	
 	@Test
+	public void testExtractSingleCaptureGroup() {
+		String restricted = "SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n";
+		String captureGroup = builder.extractCaptureGroup(restricted);
+		assertEquals("([\\d.]+)", captureGroup);
+		
+		restricted = restricted.replace(captureGroup, "");
+		captureGroup = builder.extractCaptureGroup(restricted);
+		assertEquals("([\\w._-]+)", captureGroup);
+		
+		restricted = restricted.replace(captureGroup, "");
+		captureGroup = builder.extractCaptureGroup(restricted);
+		assertEquals("([^\\r\\n]+)", captureGroup);
+	}
+	
+	@Test
+	public void testExtractCaptureGroupNotFound() {
+		String restricted = "SSH--OpenSSH_[ -]{1,2}Debian[ -_]\\r?\\n";
+		assertEquals("", builder.extractCaptureGroup(restricted));
+	}
+	
+	@Test
+	public void testExtractCaptureGroupOneParenthesis() {
+		String restricted = "SSH--OpenSSH_([ -]{1,2}Debian[ -_]\\r?\\n";
+		assertEquals("", builder.extractCaptureGroup(restricted));
+	}
+	
+	@Test
+	public void testExtractCaptureGroupOtherParenthesis() {
+		String restricted = "SSH--OpenSSH_)[ -]{1,2}Debian[ -_]\\r?\\n";
+		assertEquals("", builder.extractCaptureGroup(restricted));
+	}
+	
+	@Test
+	public void testExtractNestedCaptureGroup() {
+		String restricted = "SSH-([\\d.]+([\\.))-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n";
+		assertEquals("([\\d.]+([\\.))", builder.extractCaptureGroup(restricted));
+	}
+	
+	@Test
 	public void testRestrict(){
 		String restricted = builder.restrict(ssh);
 		assertTrue(ssh.contains(restricted));

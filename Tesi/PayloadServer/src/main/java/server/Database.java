@@ -25,8 +25,9 @@ public class Database {
 	 * service, and so, the file that will be accessed, but it will be needed to add
 	 * the relative .txt file in the directory:
 	 * "TextFiles/injectableProbes/toInject/". The current services implemented
-	 * in the map are those that can injected by any payload.
-	 * 
+	 * in the map are those that can injected by any payload, and therefore the only
+	 * files that are not empty after the general filtering.
+	 * Find the ports for your service here: https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
 	 * @param map - It's the map that needs to be filled.
 	 * 
 	 */

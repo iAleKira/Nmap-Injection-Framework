@@ -15,5 +15,5 @@ cd injectableProbes
 ./splitInjection.sh
 cd ..
 cd ..
-echo -e "\e[1;33mDone.\e[1;36m Probes split successfully.\n\e[1;33mStep 4: \e[1;36mserver is now ready to be executed.\e[1;32m\n./Nif \e[1;36mnow executing.\e[1;0m\n"
+echo -e "\e[1;33mDone.\e[1;36m Probes split successfully.\n\e[1;33mStep 4: \e[1;36mserver is now ready to be executed.\e[1;32m\n./Nif.jar \e[1;36mnow executing.\e[1;0m\n"
 java -jar ./Nif.jar $1

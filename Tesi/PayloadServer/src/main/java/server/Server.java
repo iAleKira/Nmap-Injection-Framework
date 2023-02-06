@@ -134,7 +134,7 @@ public class Server {
 		} catch (IOException e) {
 			System.out.println(
 					"An error occurred when retrieving data from database.\nMake sure Nif.jar is launched in the same "
-							+ "directory as "+ payloadPath + " and TextFiles.");
+							+ "directory as well as "+ payloadPath + " and TextFiles.");
 		}
 	}
 }
