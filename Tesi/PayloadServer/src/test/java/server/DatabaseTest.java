@@ -21,13 +21,12 @@ public class DatabaseTest {
 	public void setup() {
 		map = new HashMap<Integer, String>();
 		database = new Database(map);
-
 	}
 	
 	@Test
 	public void testMapIsCorrectlyFilled() {
 		database.fillMap();
-		assertThat(map).hasSize(4);
+		assertThat(map).hasSize(16);
 		int ports[] = { 21, 22, 25, 80};
 		for (int key : ports) {
 			assertTrue(map.containsKey(key));
@@ -46,7 +45,6 @@ public class DatabaseTest {
 	public void testGetRandomPayloadFromFile() throws IOException {
         String path = "src//test//java//server//ssh.txt"; 
         BufferedReader file = new BufferedReader(new FileReader(path));
-        
         String randomLine1 = database.getRandomLineFromFile(file, path);
         assertNotNull(randomLine1);
         assertThat(randomLine1.contains("match ssh"));

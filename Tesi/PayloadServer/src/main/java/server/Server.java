@@ -2,6 +2,7 @@ package server;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.cornutum.regexpgen.RandomGen;
@@ -91,7 +92,8 @@ public class Server {
 		Selector selector = Selector.open();
 
 		database.fillMap();
-
+		Server.fixMap(map);
+		
 		try {
 			for (int port : map.keySet()) {
 				ServerSocketChannel serverChannel = ServerSocketChannel.open();
@@ -114,8 +116,8 @@ public class Server {
 
 						String filePath = "TextFiles//injectableProbes//toInject//"
 								+ map.get(clientSocket.getLocalPort()) + ".txt";
+						try {
 						BufferedReader fileToRead = new BufferedReader(new FileReader(filePath));
-
 						BufferedReader payloadToRead = new BufferedReader(new FileReader(payloadPath));
 						String payload = database.getRandomLineFromFile(payloadToRead, payloadPath);
 						PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -127,6 +129,10 @@ public class Server {
 						System.out.println("Payload to deliver: " + payload);
 						output.println(answer);
 						System.out.println("Response delivered: " + answer);
+						} catch (IOException ex){
+							System.err.println("File is not present for service " + map.get(clientSocket.getLocalPort()));
+							clientSocket.close();
+						}
 					}
 				}
 				selector.selectedKeys().clear();
@@ -135,6 +141,21 @@ public class Server {
 			System.out.println(
 					"An error occurred when retrieving data from database.\nMake sure Nif.jar is launched in the same "
 							+ "directory as well as "+ payloadPath + " and TextFiles.");
+		}
+	}
+	
+	/**
+	 * This method iterates on every key in the map and clears the key from the map 
+	 * if the corresponding file doesn't exist.
+	 * 
+	 * @param map - map we want to cleanup for not existent files.
+	 */
+	private static void fixMap(Map<Integer,String> map) {
+		for (int key : new ArrayList<Integer>(map.keySet())) {
+			File tempFile = new File("TextFiles//injectableProbes//toInject//"+ map.get(key) + ".txt");
+			if (!tempFile.exists()) {
+				map.remove(key);
+			}
 		}
 	}
 }

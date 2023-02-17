@@ -20,14 +20,7 @@ public class Database {
 
 	/**
 	 * This method fills an input Map with each port the server listens to and pairs
-	 * the port to a string. Each string represents a service. By overriding this
-	 * method the user can set the server to listen on more ports and its relative
-	 * service, and so, the file that will be accessed, but it will be needed to add
-	 * the relative .txt file in the directory:
-	 * "TextFiles/injectableProbes/toInject/". The current services implemented
-	 * in the map are those that can injected by any payload, and therefore the only
-	 * files that are not empty after the general filtering.
-	 * Find the ports for your service here: https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+	 * the port to a string. Each string represents a service. 
 	 * @param map - It's the map that needs to be filled.
 	 * 
 	 */
@@ -36,6 +29,19 @@ public class Database {
 		map.put(22, "ssh");
 		map.put(25, "smtp");
 		map.put(80, "http");
+		map.put(23, "telnet");
+		map.put(853, "dns");
+		map.put(88, "kerberos");
+		map.put(119, "nntp");
+		map.put(137, "netbios");
+		map.put(143, "imap");
+		map.put(161, "snmp");
+		map.put(389, "ldap");
+		map.put(445, "microsoft-ds");
+		map.put(554, "rtsp");
+		map.put(119, "nntp");
+		map.put(631, "ipp");
+		map.put(110, "pop3");
 	}
 
 	/**

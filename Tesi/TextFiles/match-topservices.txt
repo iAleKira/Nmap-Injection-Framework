@@ -10,8 +10,7 @@ match netbios
 match imap
 match snmp
 match ldap
-match directconnect
-match microsoft-d
+match microsoft-ds
 match rtsp
 match nntp
 match ipp
