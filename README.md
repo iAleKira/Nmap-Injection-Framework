@@ -28,25 +28,26 @@ Here we can see an example usage:
 In red we can see the input file, in blue the output file, and in green the payload to filter for.
 We obtained a 37 lines file, and we can see some results. This means there are 37 injectable probes that can be injected by the payload "<script>alert(1)</script>".
 
-# Update 25/12/22
+# Update 25/12/2022
 
 You can now input a payload file to Nif.jar. Server will extract a random payload to deliver from input file.
 ![servinput](https://user-images.githubusercontent.com/89973113/212331965-290f684c-fa8d-41b8-81c1-b267af5f5a8f.png)
 In green you can see the input file, in blue the payload that got selected to be delivered, in red the delivery.
 
-# Update 10/01/23
+# Update 10/01/2023
 
 You can now filter the default file (top-services-probes.txt) by a payload of choice.
 ![update filter](https://user-images.githubusercontent.com/89973113/211525656-7257d8be-e0c5-4b9e-844a-8a8897532225.png)
 
-# Update 03/02/23
+# Update 03/02/2023 + 20/02/2023
 
 You can now launch full program (both All_payloads_filter and Nif at the same time) through Framework.sh.
-![shellscript2](https://user-images.githubusercontent.com/89973113/216820337-7bbd17e5-1f1b-49b9-94f8-2aee198cbc1e.png)
+![shellscript2](https://user-images.githubusercontent.com/89973113/220167511-5e6c936c-4b5e-4fa2-a078-ac6d04cad31a.png)
 
 You can specify up to 2 parameters to the shell script: the first being the file where to get the payloads from, the second being the payload you want to filter for.
 Need help? Run: ./Framework.sh --help
 
+Nif.jar can now adapt the ports to listen to according to the database file obtained by the filter. 
 
 # BeEF
 
