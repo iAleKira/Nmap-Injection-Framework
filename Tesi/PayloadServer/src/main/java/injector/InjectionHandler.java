@@ -60,7 +60,7 @@ public class InjectionHandler {
 	 */
 
 	public String extractCaptureGroup(String captureSource) {
-		String captureGroup = "";
+		String captureGroup;
 		String captureGroup2;
 		if (!(captureSource.contains("(") && captureSource.contains(")"))) {
 			return "";

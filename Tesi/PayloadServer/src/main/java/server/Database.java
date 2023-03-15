@@ -42,8 +42,8 @@ public class Database {
 		map.put(119, "nntp");
 		map.put(631, "ipp");
 		map.put(110, "pop3");
-	}
-
+	}	
+	
 	/**
 	 * This method generates a random location and accesses a valid file from the
 	 * line in that location. The accessed line is then returned.
