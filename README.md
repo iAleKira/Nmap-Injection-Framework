@@ -4,7 +4,7 @@ This project is based upon RevOK prototype developed by Andrea Valenza, Gabriele
 This framework is designed to exploit vulnerabilities of the well known scanning tool Nmap.
 Developed in Java, it consists of 2 executables:
 1. Nif.jar (Injector_server.jar)
-2. All_payloads_filter.jar
+2. Filter.jar (All_payloads_filter.jar)
 
 Nif.jar sets up a server listening on certain ports, waiting for incoming connections by a scanner.
 Once it receives a request from the client, the server delivers the answer with a proper nmap output formula and injects the web client reading the output.
@@ -20,7 +20,7 @@ In red you can see the reply to the client, correctly injected.
 Example scan all ports:
 ![three](https://user-images.githubusercontent.com/89973113/208711680-3f6bad71-f797-4352-912e-727196377a97.png)
 
-All_payloads_filter.jar takes a file named top-services-probes.txt (which contains all the probes from nmap-service-probes that belong to top services we manually filtered for, see: match-topservices.txt and extractTopServices.sh) and looks for match directives that can be injected with a certain payload. 
+Filter.jar takes a file named top-services-probes.txt (which contains all the probes from nmap-service-probes that belong to top services we manually filtered for, see: match-topservices.txt and extractTopServices.sh) and looks for match directives that can be injected with a certain payload. 
 We use a general payload by default, which contains most of the injection characters known, and we print the output to a file called injectable-service-probes.txt. 
 But if you want you can specify a different payload to filter for as the input of the executable.
 Here we can see an example usage: 
@@ -37,12 +37,12 @@ In green you can see the input file, in blue the payload that got selected to be
 # Update 10/01/2023
 
 You can now filter the default file (top-services-probes.txt) by a payload of choice.
-![update filter](https://user-images.githubusercontent.com/89973113/211525656-7257d8be-e0c5-4b9e-844a-8a8897532225.png)
+![filtro2](https://user-images.githubusercontent.com/89973113/225991196-5a390267-a7a8-4862-82b7-42c687d81626.png)
 
 # Update 03/02/2023 + 20/02/2023
 
-You can now launch full program (both All_payloads_filter and Nif at the same time) through Framework.sh.
-![shellscript2](https://user-images.githubusercontent.com/89973113/220167511-5e6c936c-4b5e-4fa2-a078-ac6d04cad31a.png)
+You can now launch full program (both Filter and Nif at the same time) through Framework.sh.
+![shellscript2](https://user-images.githubusercontent.com/89973113/225991324-bad50d57-2176-4671-930a-b98ab4c4feb4.png)
 
 You can specify up to 2 parameters to the shell script: the first being the file where to get the payloads from, the second being the payload you want to filter for.
 Need help? Run: ./Framework.sh --help
