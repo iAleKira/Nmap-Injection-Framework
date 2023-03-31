@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"server","l":"Database"},{"p":"server","l":"DatabaseTest"},{"p":"injector","l":"InjectionHandler"},{"p":"injector","l":"InjectionHandlerTest"},{"p":"server","l":"ResponseGenerator"},{"p":"server","l":"ResponseGeneratorTest"},{"p":"server","l":"Server"}];updateSearchResults();
