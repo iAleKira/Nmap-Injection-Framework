@@ -58,21 +58,30 @@ public class Database {
 		if (buffer == null) {
 			throw new IllegalArgumentException("Input file is not valid. File: " + buffer);
 		}
-
 		if (path == null) {
 			throw new IllegalArgumentException("Input path is not valid. Path: " + path);
 		}
+		
+		String randomLine = "";
 		int count = 0;
 		try {
 			while (buffer.readLine() != null) {
 				count++;
 			}
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			System.out.println("Error while reading from file " + path + ". Cannot read more from file.");
 		}
+		
 		buffer.close();
 		double randomLocation = (Math.random() * count);
-		String randomLine = Files.readAllLines(Paths.get(path)).get((int) randomLocation);
+		try {
+			randomLine = Files.readAllLines(Paths.get(path)).get((int) randomLocation);
+		} 
+		catch(IndexOutOfBoundsException ex){
+			System.out.println("File "+ path + " is empty.");
+			System.exit(1);
+		} 
 		return randomLine;
 	}
 }

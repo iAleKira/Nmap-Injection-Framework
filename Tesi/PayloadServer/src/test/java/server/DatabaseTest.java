@@ -66,7 +66,7 @@ public class DatabaseTest {
 	
 	@Test
 	public void testNullBufferedReaderExceptionIsCaught() throws IOException {
-		String path = "tests///server//ssh.txt"; 
+		String path = "src//test//server//ssh.txt"; 
         boolean thrown = false;
         try{
         	database.getRandomLineFromFile(null, path);
