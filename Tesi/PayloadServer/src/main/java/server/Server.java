@@ -78,7 +78,7 @@ public class Server {
 			break;
 		case 1:
 			payloadPath = args[0];
-			if (!new File(payloadPath).exists() || payloadPath.contains(".exe")) {
+			if (!new File(payloadPath).exists()) {
 				System.err.println("Payload file is unreachable");
 				System.exit(1);
 			}
