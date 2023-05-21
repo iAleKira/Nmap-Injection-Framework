@@ -2,7 +2,7 @@
 This project is based upon RevOK prototype developed by Andrea Valenza, Gabriele Costa and Alessandro Armando. You can find the paper online at this link: https://arxiv.org/pdf/2006.09769.pdf
 
 This framework is designed to exploit vulnerabilities of the well known scanning tool Nmap.
-Developed in Java, it consists of 2 executables:
+Developed in Bash and Java, it consists of 2 executables:
 1. Nif.jar (Injector_server.jar)
 2. Filter.jar (All_payloads_filter.jar)
 
