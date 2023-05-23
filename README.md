@@ -9,7 +9,7 @@ Developed in Bash and Java, it consists of 2 executables:
 Nif.jar sets up a server listening on certain ports, waiting for incoming connections by a scanner.
 Once it receives a request from the client, the server delivers the answer with a proper nmap output formula and injects the web client reading the output.
 
-# How does it work:
+# How it works:
 ![one](https://user-images.githubusercontent.com/89973113/208695942-f899937f-13a0-4695-87f6-5fad4b411e25.png)
 In green we can see the scan is launched on the machine that is using the server, on port 22, but you don't need to specify a port 
 if you want to scan all ports on the server at the same time. 
