@@ -1,7 +1,8 @@
 # Nmap Injection Framework
 This project is based upon RevOK prototype developed by Andrea Valenza, Gabriele Costa and Alessandro Armando. You can find the paper online at this link: https://arxiv.org/pdf/2006.09769.pdf
 
-We developed a paper together with prof. Gabriele Costa and PhD Student Silvia De Francisci about this framework. You can find more info at this link: https://www.apps.unirc.it:37137/ITASEC2023/paper06.pdf
+We developed a paper together with prof. Gabriele Costa and PhD Student Silvia De Francisci about this framework. The paper was presented at ITASEC 2023, the Italian National Cybersecurity Conference that takes place every year.
+You can find more info at this link: https://www.apps.unirc.it:37137/ITASEC2023/paper06.pdf
 
 This framework is designed to exploit vulnerabilities of the well known scanning tool Nmap.
 Developed in Bash and Java, it consists of 2 executables:
