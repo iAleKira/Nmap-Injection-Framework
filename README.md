@@ -70,6 +70,8 @@ Step 3: Beef can now launch commands on the browser: let's prove it.
 
 # Docker
 
+Since exposing our own network to scanners is dangerous, as we must reveal our public IP address in order to be reached by a scan, with the aid of Docker it is possible have a mobile and isolated system that you can then upload on any machine hosting website, obtaining, in such way, an isolated machine on an isolated network.  
+
 You can pull the latest version of the docker image of the tool here : https://hub.docker.com/r/alekira/nmap_injection_framework
 
 # Having issues with jar files on Linux? 
